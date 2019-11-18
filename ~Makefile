@@ -1,0 +1,32 @@
+NAME		=	executable
+NAMELIBFT	=	libft.a
+
+SRC			=	main.c							## No need for a \ on the last line
+SRCLIBFT	=	ft_memset.c							## No need for a \ on the last line
+
+OBJ			=	$(SRC:.c=.o) libft.o					## get all .o names from .c names
+OBJLIBFT	=	$(SRCLIBFT:.c=.o) 					## get all .o names from .c names
+
+CC			=	cc
+
+CFLAGS		+=	-W -Wall -Wextra -Werror -pedantic		## '+=' allow to keep default flags.
+
+LDFLAGS		= libft.a							## example : -L/home/user/lib -lmyLib/ ou pas en fait
+
+RM			=	rm -f
+
+all	: $(NAME)						
+
+$(NAMELIBFT)	: $(OBJLIBFT)
+		AR -rv $(NAMELIBFT) $(OBJLIBFT)
+
+$(NAME)	:	$(OBJ) $(NAMELIBFT)
+		$(CC) -o $(NAME) $(OBJ) $(LDFLAGS) $(CFLAGS)
+
+clean	:
+		$(RM) $(OBJ) $(OBJLIBFT)			## delete all .o
+
+fclean	:	clean							## clean + delete executable
+		$(RM) $(NAME) $(NAMELIBFT)				
+
+re	:	fclean all							## delete all .o and recompile all. Must use when editing a .h
