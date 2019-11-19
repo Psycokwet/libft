@@ -6,12 +6,25 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:38:18 by scarboni          #+#    #+#             */
-/*   Updated: 2019/11/08 14:16:02 by scarboni         ###   ########.fr       */
+/*   Updated: 2019/11/19 10:19:30 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
+#include <stdlib.h>
+
+static int	skip_blanks(const char *str)
+{
+	int i;
+
+	i = 0;
+	while (str[i] == ' ' || (str[i] > 8 && str[i] < 14))
+	{
+		i++;
+	}
+	return (i);
+}
 
 static int	pow(int value, int pow)
 {
@@ -24,26 +37,38 @@ static int	pow(int value, int pow)
 	}
 	return (result * value);
 }
+
+static int	set_sign(int *i, const char *str)
+{
+	if (str[*i] == '-')
+	{
+		(*i)++;
+		return (-1);
+	}
+	else if (str[*i] == '+')
+		(*i)++;
+	return (1);
+}
+
 int			ft_atoi(const char *str)
 {
-	int value;
-	int i;
-	size_t size;
-	int sign;
+	int		value;
+	int		i;
+	size_t	size;
+	int		sign;
 
-	sign = 1;
 	value = 0;
-	i = 0;
+	i = skip_blanks(str);
+	sign = set_sign(&i, str);
 	size = ft_strlen(str);
-	if (str[i] == '-')
-	{
-		sign = -1;
-		i++;
-	}
 	while (str[i] != '\0' && ft_isdigit(str[i]))
 	{
-		value = pow((str[i] - '0'), size - i) + value;
+		value = (pow((str[i] - '0'), size - i) * sign) + value;
+		if ((sign < 0 && value > 0))
+			return (0);
+		else if ((sign > 0 && value < 0))
+			return (-1);
 		i++;
 	}
-	return (value * sign) / (pow(1, size - --i));
+	return (value) / (pow(1, size - --i));
 }

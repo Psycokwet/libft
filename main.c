@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:38:18 by scarboni          #+#    #+#             */
-/*   Updated: 2019/11/18 12:34:38 by scarboni         ###   ########.fr       */
+/*   Updated: 2019/11/19 10:10:34 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -294,6 +294,7 @@ void test_strlcat()
 
 void test_atoi(char* s)
 {
+	printf("Atoi tests [%s]:\n", s);
 	printf("%d:\n", atoi(s));
 	printf("%d:\n", ft_atoi(s));
 	printf("\n");
@@ -399,7 +400,14 @@ int		main(int argc, char **argv)
 	test_atoi("asdfghj");
 	test_atoi("123asdfghj");
 	test_atoi("asdfghj123");
-
+	test_atoi("100 000");
+	test_atoi(" 1000");
+	test_atoi("2147483647");
+	test_atoi("-2147483648");
+	test_atoi("99999999999999999999999999");
+	test_atoi("-99999999999999999999999999");
+	test_atoi("+48");
+	
 	test_strdup("pwett");
 	test_strdup("");
 	test_strdup("42312");
