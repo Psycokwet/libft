@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:38:18 by scarboni          #+#    #+#             */
-/*   Updated: 2019/11/19 13:06:53 by scarboni         ###   ########.fr       */
+/*   Updated: 2019/11/20 13:10:46 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,9 +137,6 @@ int test_substr_int(void)
 			ft_strlen(str[3])
 		}
 	};
-	(void)start;
-	(void)len;
-
 	while (i < size_str)
 	{
 		while (j < size_start)
@@ -153,8 +150,6 @@ int test_substr_int(void)
 				sample_data->start = start[i][j];
 				sample_data->s_good = s_goods[indice_datas];
 				substr_datas[indice_datas] = sample_data;
-				//substr_datas[i + j + m] = (s_substr_test_datas)(malloc(sizeof(s_substr_test_datas) * size_datas));
-				//printf("test No [%d][%d][%d]\n", i, j, m);
 				m++;
 			}
 			m = 0;
@@ -173,10 +168,119 @@ int test_substr_int(void)
 	return r;
 }
 
+
+int test_strjoin(char *s1, char *s2, char *s_finale, int i)
+{
+	if(strcmp(ft_strjoin(s1, s2), s_finale))
+	{
+		printf("test_strjoin No [%d] KO for [%s][%s], expected [%s]\n", i, s1, s2, s_finale);
+		return -1;
+	}
+	return 0;
+}
+
+int test_strjoin_int(void)
+{
+	int i = 0;
+
+	const int MAX = 5;
+	char *s_finales[5] =
+	{
+		"",
+		"2",
+		"1",
+		"12",
+		"Hey  Ho !",
+	};
+
+	char *s1[5] =
+	{
+		"",
+		"",
+		"1",
+		"1",
+		"Hey ",
+	};
+	char *s2[5] =
+	{
+		"",
+		"2",
+		"",
+		"2",
+		" Ho !",
+	};
+
+	int r = 0;
+	while (i < MAX)
+	{
+		r = test_strjoin(s1[i], s2[i], s_finales[i], i) + r;
+		i++;
+	}
+	return r;
+}
+
+
+int test_strtrim(char *s, char *set, char *s_finale, int i)
+{
+	if(strcmp(ft_strtrim(s, set), s_finale))
+	{
+		printf("test_strjoin No [%d] KO for [%s][%s], expected [%s]\n", i, s, set, s_finale);
+		return -1;
+	}
+	return 0;
+}
+
+int test_strtrim_int(void)
+{
+	int i = 0;
+
+	const int MAX = 5;
+	char *s_finales[5] =
+	{
+		"Hello  ça va ?",
+		"Ahquecoucoubob!",
+		"lolilol!",
+		"Hmmmm",
+		"Hey ",
+	};
+
+	char *s[5] =
+	{
+		"Hello \t ça va ?",
+		"Ah que coucou bob !",
+		"\n\n\n\t\t\r       lolilol\n\n\n!",
+		"Hmmmm",
+		"Hey ",
+	};
+	char *set[5] =
+	{
+		"\t",
+		" ",
+		"\n\t\r ",
+		"",
+		NULL,
+	};
+
+	int r = 0;
+	while (i < MAX)
+	{
+		r = test_strtrim(s[i], set[i], s_finales[i], i) + r;
+		i++;
+	}
+	return r;
+}
+
+void print_errors(char * function_name, int n_errors)
+{
+	printf("%s... \t[%d] errors detected\n", function_name, -n_errors);
+}
+
 int		main(int argc, char **argv)
 {
 	(void)argc;
 	(void)argv;
-	printf("test_substr... [%d] errors", -test_substr_int());
+	print_errors("ft_substr", test_substr_int());
+	print_errors("ft_strjoin", test_strjoin_int());
+	print_errors("ft_strtrim", test_strtrim_int());
 	return (0);
 }

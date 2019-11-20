@@ -1,38 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:38:18 by scarboni          #+#    #+#             */
-/*   Updated: 2019/11/19 16:32:38 by scarboni         ###   ########.fr       */
+/*   Updated: 2019/11/20 13:29:35 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
-#include <stdio.h>
 
-static char	*ft_substr_int(const char *src, size_t len)
+char	**ft_split(char const *s, char c)
 {
-	char	*dst;
+	int n_of_split, i;
 
-	dst = (char*) malloc(len * sizeof(char));
-	if (dst != NULL)
-		ft_strlcpy(dst, src, len);
-	return (dst);
+	n_of_split = 1;
+	i = 0;
+	
 }
 
-char		*ft_substr(char const *s, unsigned int start, size_t len)
-{
-	if (!s)
-		return (NULL);
-	return (ft_substr_int(s + start, len + 1));
-}
 /*
-** Alloue (avec malloc(3)) et retourne une chaine de
-** caractères issue de la chaine donnée en argument
-** Cette nouvelle chaine commence à l’index ’start’ et
-** a pour taille maximale ’len’
+** Alloue (avec malloc(3)) et retourne un tableau
+** de chaines de caracteres obtenu en séparant s à
+** l’aide du caractère c, utilisé comme délimiteur. Le
+** tableau doit être terminé par NULL.
+** Return : Le tableau de nouvelles chaines de caractères,
+** résultant du découpage. NULL si l’allocation
+** échoue.
 */

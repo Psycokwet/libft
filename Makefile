@@ -32,7 +32,9 @@ SRC			=	ft_memset.c		\
 				ft_strdup.c		\
 				ft_toupper.c	\
 				ft_substr.c		\
-				ft_strjoin.c
+				ft_strjoin.c	\
+				ft_strtrim.c	\
+				ft_itoa.c
 
 
 OBJTESTP1		=	$(SRCTESTP1:.c=.o) 				## get all .o names from .c names
