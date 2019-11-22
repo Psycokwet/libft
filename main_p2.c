@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:38:18 by scarboni          #+#    #+#             */
-/*   Updated: 2019/11/20 13:10:46 by scarboni         ###   ########.fr       */
+/*   Updated: 2019/11/22 12:27:36 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -222,9 +222,10 @@ int test_strjoin_int(void)
 
 int test_strtrim(char *s, char *set, char *s_finale, int i)
 {
-	if(strcmp(ft_strtrim(s, set), s_finale))
+	char *result = ft_strtrim(s, set);
+	if(strcmp(result, s_finale))
 	{
-		printf("test_strjoin No [%d] KO for [%s][%s], expected [%s]\n", i, s, set, s_finale);
+		printf("test_strjoin No [%d] KO for [%s][%s], expected [%s], got [%s]\n", i, s, set, s_finale, result);
 		return -1;
 	}
 	return 0;
@@ -234,26 +235,35 @@ int test_strtrim_int(void)
 {
 	int i = 0;
 
-	const int MAX = 5;
-	char *s_finales[5] =
+	const int MAX = 8;
+	char *s_finales[8] =
 	{
-		"Hello  ça va ?",
-		"Ahquecoucoubob!",
-		"lolilol!",
+		"Hello \t  Please\n Trim me !",
+		"",
+		"Hello \t  Please\n Trim me !",
+		"Hello \t ça va ?",
+		"Ah que coucou bob !",
+		"lolilol\n\n\n!",
 		"Hmmmm",
 		"Hey ",
 	};
 
-	char *s[5] =
+	char *s[8] =
 	{
+		"   \t  \n\n \t\t  \n\n\nHello \t  Please\n Trim me !\n   \n \n \t\t\n  ",
+		"  \t \t \n   \n\n\n\t",
+		"   \t  \n\n \t\t  \n\n\nHello \t  Please\n Trim me !\n   \n \n \t\t\n  ",
 		"Hello \t ça va ?",
 		"Ah que coucou bob !",
 		"\n\n\n\t\t\r       lolilol\n\n\n!",
 		"Hmmmm",
 		"Hey ",
 	};
-	char *set[5] =
+	char *set[8] =
 	{
+		" \n\t",
+		" \n\t",
+		" \n\t",
 		"\t",
 		" ",
 		"\n\t\r ",

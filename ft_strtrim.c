@@ -6,20 +6,20 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:38:18 by scarboni          #+#    #+#             */
-/*   Updated: 2019/11/19 16:27:18 by scarboni         ###   ########.fr       */
+/*   Updated: 2019/11/22 12:47:39 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 
-int		is_equal_to(char c, char const *set)
+static int		is_equal_to(char c, char const *set)
 {
 	int i;
 
 	i = 0;
-
 	while (set[i] != '\0')
 	{
 		if (set[i] == c)
@@ -29,54 +29,60 @@ int		is_equal_to(char c, char const *set)
 	return (0);
 }
 
-int		strlen_trimed(char const *s1, char const *set)
+static int		get_start_trimmed(char const *s1, char const *set)
 {
-	int i, j, size_new_s;
+	int i;
 
 	i = 0;
-	j = 0;
-	size_new_s = 0;
-	while (s1[i] != '\0')
-	{
-		if(!is_equal_to(s1[i], set))
-			size_new_s++;
+	while (is_equal_to(s1[i], set) && s1[i] != '\0')
 		i++;
-	}
-	return size_new_s;
+	return (i);
 }
 
-char	*ft_strtrim_int(char const *s1, char const *set)
+static int		get_end_trimmed(char const *s1, char const *set, size_t len)
 {
-	int size_new_s, i, j;
+	size_t i;
+
+	i = 1;
+	while (is_equal_to(s1[len - i], set) && i < len)
+		i++;
+	return (i-1);
+}
+
+static char	*ft_strtrim_int(char const *s1, char const *set)
+{
+	int size_new_s, j;
+	size_t len, end, start;
 	char *trimed;
-	size_new_s = 1 + strlen_trimed(s1, set);
 	
-	i = 0;
+	len = ft_strlen(s1);
+	
+	start = get_start_trimmed(s1, set);
+	if(start == len)
+	{
+		trimed = (char*) malloc(sizeof(char));
+		trimed[0] = '\0';
+		return (trimed);
+	}
+	end = get_end_trimmed(s1, set, len);
+	size_new_s = ((int)len) - start - end;
 	j = 0;
-	trimed = (char*) malloc(size_new_s * sizeof(char));
+	trimed = (char*) malloc((1 + size_new_s) * sizeof(char));
 	if(!trimed)
 		return (NULL);
-	while (i < size_new_s && s1[j])
-	{
-		if(!is_equal_to(s1[j], set)){
 
-	//printf("WWRITE : [%d][%c][%c]\n", i, trimed[i], s1[j]);
-			trimed[i] = s1[j];
-	//printf("WWRoTE : [%d][%c][%c]\n", i, trimed[i], s1[j]);
-			i++;
-		}
+	while (start < len - end && s1[start])
+	{
+		trimed[j] = s1[start];
+		start++;
 		j++;
 	}
-	//printf("WRITE : [%d][%c][%c]\n", i, trimed[i], '\0');
-	trimed[i] = '\0';
-	//printf("WRoTE : [%d][%c][%c]\n", i, trimed[i], '\0');
+	trimed[j] = '\0';
 	return trimed;
 }
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	//printf("INPUT [%s][%s]\n", s1, set);
-
 	if (!s1)
 		return (NULL);
 	if(!set)
