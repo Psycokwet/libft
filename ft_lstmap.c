@@ -1,46 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:38:18 by scarboni          #+#    #+#             */
-/*   Updated: 2019/11/25 12:25:38 by scarboni         ###   ########.fr       */
+/*   Updated: 2019/11/25 16:51:21 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
-static void	init(size_t *j, int *start_pattern)
+t_list	*ft_lstmap_int(t_list *lst, t_list *new_lst, void *(*f)(void *),
+void (*del)(void *))
 {
-	*j = 0;
-	*start_pattern = -1;
+	(void)del;
+	if (!lst->next)
+		return (NULL);
+	new_lst->next = ft_lstnew((*f)(lst->content));
+	return (NULL);
 }
 
-char		*ft_strnstr(const char *haystack, const char *needle, size_t len)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	size_t	i;
-	size_t	j;
-	int		start_pattern;
+	t_list *new_lst;
 
-	if (needle[0] == '\0')
-		return ((char*)haystack);
-	i = -1;
-	init(&j, &start_pattern);
-	while (haystack[++i] != '\0' && i < len)
-	{
-		if (haystack[i] == needle[j])
-		{
-			j++;
-			if (start_pattern == -1)
-				start_pattern = i;
-			if (needle[j] == '\0')
-				return ((char*)&haystack[start_pattern]);
-		}
-		else
-			init(&j, &start_pattern);
-	}
-	return (NULL);
+	if (!lst || !del)
+		return (NULL);
+	new_lst = ft_lstnew((*f)(lst->content));
+	if (!new_lst)
+		return (NULL);
+	ft_lstmap_int(lst, new_lst, f, del);
+	return (new_lst);
 }

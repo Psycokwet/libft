@@ -1,46 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:38:18 by scarboni          #+#    #+#             */
-/*   Updated: 2019/11/25 12:25:38 by scarboni         ###   ########.fr       */
+/*   Updated: 2019/11/25 13:15:36 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
-static void	init(size_t *j, int *start_pattern)
+t_list	*ft_lstlast_int(t_list *lst)
 {
-	*j = 0;
-	*start_pattern = -1;
+	return (lst->next) ? ft_lstlast_int(lst->next) : lst;
 }
 
-char		*ft_strnstr(const char *haystack, const char *needle, size_t len)
+t_list	*ft_lstlast(t_list *lst)
 {
-	size_t	i;
-	size_t	j;
-	int		start_pattern;
-
-	if (needle[0] == '\0')
-		return ((char*)haystack);
-	i = -1;
-	init(&j, &start_pattern);
-	while (haystack[++i] != '\0' && i < len)
-	{
-		if (haystack[i] == needle[j])
-		{
-			j++;
-			if (start_pattern == -1)
-				start_pattern = i;
-			if (needle[j] == '\0')
-				return ((char*)&haystack[start_pattern]);
-		}
-		else
-			init(&j, &start_pattern);
-	}
-	return (NULL);
+	return (lst) ? ft_lstlast_int(lst->next) : lst;
 }

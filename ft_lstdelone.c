@@ -1,46 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:38:18 by scarboni          #+#    #+#             */
-/*   Updated: 2019/11/25 12:25:38 by scarboni         ###   ########.fr       */
+/*   Updated: 2019/11/25 16:36:21 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
+#include <stdlib.h>
 
-static void	init(size_t *j, int *start_pattern)
+void	ft_lstdelone(t_list *lst, void (*del)(void*))
 {
-	*j = 0;
-	*start_pattern = -1;
-}
-
-char		*ft_strnstr(const char *haystack, const char *needle, size_t len)
-{
-	size_t	i;
-	size_t	j;
-	int		start_pattern;
-
-	if (needle[0] == '\0')
-		return ((char*)haystack);
-	i = -1;
-	init(&j, &start_pattern);
-	while (haystack[++i] != '\0' && i < len)
+	if (!lst || !del)
+		return ;
+	if (lst->content)
 	{
-		if (haystack[i] == needle[j])
-		{
-			j++;
-			if (start_pattern == -1)
-				start_pattern = i;
-			if (needle[j] == '\0')
-				return ((char*)&haystack[start_pattern]);
-		}
-		else
-			init(&j, &start_pattern);
+		(*del)(lst->content);
+		lst->content = NULL;
 	}
-	return (NULL);
+	free(lst);
 }

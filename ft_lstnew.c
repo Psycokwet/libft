@@ -1,46 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:38:18 by scarboni          #+#    #+#             */
-/*   Updated: 2019/11/25 12:25:38 by scarboni         ###   ########.fr       */
+/*   Updated: 2019/11/25 15:36:54 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
+#include <stdlib.h>
 
-static void	init(size_t *j, int *start_pattern)
+t_list	*ft_lstnew(void *content)
 {
-	*j = 0;
-	*start_pattern = -1;
-}
+	t_list *new_lst;
 
-char		*ft_strnstr(const char *haystack, const char *needle, size_t len)
-{
-	size_t	i;
-	size_t	j;
-	int		start_pattern;
-
-	if (needle[0] == '\0')
-		return ((char*)haystack);
-	i = -1;
-	init(&j, &start_pattern);
-	while (haystack[++i] != '\0' && i < len)
-	{
-		if (haystack[i] == needle[j])
-		{
-			j++;
-			if (start_pattern == -1)
-				start_pattern = i;
-			if (needle[j] == '\0')
-				return ((char*)&haystack[start_pattern]);
-		}
-		else
-			init(&j, &start_pattern);
-	}
-	return (NULL);
+	new_lst = (t_list*)malloc(sizeof(t_list));
+	if (!new_lst)
+		return (NULL);
+	new_lst->content = content;
+	new_lst->next = NULL;
+	return (new_lst);
 }

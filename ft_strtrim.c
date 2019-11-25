@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:38:18 by scarboni          #+#    #+#             */
-/*   Updated: 2019/11/22 12:47:39 by scarboni         ###   ########.fr       */
+/*   Updated: 2019/11/25 16:58:28 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <stdio.h>
 #include <string.h>
 
-static int		is_equal_to(char c, char const *set)
+static int	is_equal_to(char c, char const *set)
 {
 	int i;
 
@@ -29,7 +29,7 @@ static int		is_equal_to(char c, char const *set)
 	return (0);
 }
 
-static int		get_start_trimmed(char const *s1, char const *set)
+static int	get_start_trimmed(char const *s1, char const *set)
 {
 	int i;
 
@@ -39,38 +39,39 @@ static int		get_start_trimmed(char const *s1, char const *set)
 	return (i);
 }
 
-static int		get_end_trimmed(char const *s1, char const *set, size_t len)
+static int	get_end_trimmed(char const *s1, char const *set, size_t len)
 {
 	size_t i;
 
 	i = 1;
 	while (is_equal_to(s1[len - i], set) && i < len)
 		i++;
-	return (i-1);
+	return (i - 1);
 }
 
-static char	*ft_strtrim_int(char const *s1, char const *set)
+static char	*ft_strtrim_int_mini(void)
 {
-	int size_new_s, j;
-	size_t len, end, start;
 	char *trimed;
-	
-	len = ft_strlen(s1);
-	
-	start = get_start_trimmed(s1, set);
-	if(start == len)
-	{
-		trimed = (char*) malloc(sizeof(char));
-		trimed[0] = '\0';
-		return (trimed);
-	}
+
+	trimed = (char*)malloc(sizeof(char));
+	trimed[0] = '\0';
+	return (trimed);
+}
+
+static char	*ft_strtrim_int_full(size_t len, size_t start, char const *s1,
+char const *set)
+{
+	int		size_new_s;
+	int		j;
+	size_t	end;
+	char	*trimed;
+
 	end = get_end_trimmed(s1, set, len);
 	size_new_s = ((int)len) - start - end;
 	j = 0;
-	trimed = (char*) malloc((1 + size_new_s) * sizeof(char));
-	if(!trimed)
+	trimed = (char*)malloc((1 + size_new_s) * sizeof(char));
+	if (!trimed)
 		return (NULL);
-
 	while (start < len - end && s1[start])
 	{
 		trimed[j] = s1[start];
@@ -78,16 +79,22 @@ static char	*ft_strtrim_int(char const *s1, char const *set)
 		j++;
 	}
 	trimed[j] = '\0';
-	return trimed;
+	return (trimed);
 }
 
-char	*ft_strtrim(char const *s1, char const *set)
+char		*ft_strtrim(char const *s1, char const *set)
 {
+	size_t	len;
+	size_t	start;
+
 	if (!s1)
 		return (NULL);
-	if(!set)
-		return ft_strdup(s1);
-	return ft_strtrim_int(s1, set);
+	if (!set)
+		return (ft_strdup(s1));
+	len = ft_strlen(s1);
+	start = get_start_trimmed(s1, set);
+	return (start == len) ? ft_strtrim_int_mini() : 
+	ft_strtrim_int_full(len, start, s1, set);
 }
 
 /*

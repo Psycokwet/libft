@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:38:18 by scarboni          #+#    #+#             */
-/*   Updated: 2019/11/19 16:32:38 by scarboni         ###   ########.fr       */
+/*   Updated: 2019/11/25 16:44:01 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static char	*ft_substr_int(const char *src, size_t len)
 {
 	char	*dst;
 
-	dst = (char*) malloc(len * sizeof(char));
+	dst = (char*)malloc(len * sizeof(char));
 	if (dst != NULL)
 		ft_strlcpy(dst, src, len);
 	return (dst);

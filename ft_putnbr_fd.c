@@ -1,46 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:38:18 by scarboni          #+#    #+#             */
-/*   Updated: 2019/11/25 12:25:38 by scarboni         ###   ########.fr       */
+/*   Updated: 2019/11/25 16:42:50 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 #include <stdio.h>
+#include <unistd.h>
 
-static void	init(size_t *j, int *start_pattern)
+static void	ft_putnbr_fd_int(int sign, int n, int fd)
 {
-	*j = 0;
-	*start_pattern = -1;
-}
-
-char		*ft_strnstr(const char *haystack, const char *needle, size_t len)
-{
-	size_t	i;
-	size_t	j;
-	int		start_pattern;
-
-	if (needle[0] == '\0')
-		return ((char*)haystack);
-	i = -1;
-	init(&j, &start_pattern);
-	while (haystack[++i] != '\0' && i < len)
+	if (n > -10 && n < 10)
+		ft_putchar_fd((sign * n) + '0', fd);
+	else
 	{
-		if (haystack[i] == needle[j])
-		{
-			j++;
-			if (start_pattern == -1)
-				start_pattern = i;
-			if (needle[j] == '\0')
-				return ((char*)&haystack[start_pattern]);
-		}
-		else
-			init(&j, &start_pattern);
+		ft_putnbr_fd_int(sign, n / 10, fd);
+		ft_putnbr_fd_int(sign, n % 10, fd);
 	}
-	return (NULL);
 }
+
+void		ft_putnbr_fd(int n, int fd)
+{
+	if (n < 0)
+	{
+		ft_putchar_fd(fd, '-');
+		ft_putnbr_fd_int(-1, n, fd);
+	}
+	ft_putnbr_fd_int(1, n, fd);
+}
+/*
+** #1. L’integer à écrire.
+** #2. Le file descriptor sur lequel écrire.
+** Valeur de retour None
+** Fonctions externes autorisées
+** write
+** Description Écrit l’integer ’n’ sur le file descriptor donné.
+*/
