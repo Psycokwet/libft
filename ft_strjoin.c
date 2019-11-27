@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:38:18 by scarboni          #+#    #+#             */
-/*   Updated: 2019/11/27 14:28:57 by scarboni         ###   ########.fr       */
+/*   Updated: 2019/11/27 15:11:51 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		return (NULL);
 	size_s1 = ft_strlen(s1);
 	size_s2 = ft_strlen(s2);
-	dst = malloc((size_s1 + size_s2) * sizeof(char));
+	dst = malloc((size_s1 + size_s2 + 1) * sizeof(char));
 	if (dst == NULL)
 		return (NULL);
 	ft_strlcpy(dst, s1, size_s1 + 1);

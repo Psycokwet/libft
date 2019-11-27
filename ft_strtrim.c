@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:38:18 by scarboni          #+#    #+#             */
-/*   Updated: 2019/11/27 14:30:11 by scarboni         ###   ########.fr       */
+/*   Updated: 2019/11/27 17:50:47 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,9 @@ char const *set)
 	char	*trimed;
 
 	end = get_end_trimmed(s1, set, len);
-	size_new_s = ((int)len) - start - end;
+	if ((start + end) > len)
+		return (NULL);
+	size_new_s = len - (start + end);
 	j = 0;
 	trimed = (char*)malloc((1 + size_new_s) * sizeof(char));
 	if (!trimed)

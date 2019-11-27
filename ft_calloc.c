@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:38:18 by scarboni          #+#    #+#             */
-/*   Updated: 2019/11/08 15:37:04 by scarboni         ###   ########.fr       */
+/*   Updated: 2019/11/27 15:54:39 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,9 @@ void	*ft_calloc(size_t count, size_t size)
 
 	fullsize = count * size;
 	if (fullsize == 0)
-	{
 		fullsize = 1;
-	}
 	mem = malloc(fullsize);
 	if (mem != NULL)
-	{
 		ft_bzero(mem, fullsize);
-	}
 	return (mem);
 }
