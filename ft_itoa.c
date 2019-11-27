@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:38:18 by scarboni          #+#    #+#             */
-/*   Updated: 2019/11/25 16:40:35 by scarboni         ###   ########.fr       */
+/*   Updated: 2019/11/27 12:19:22 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-static int		pow(int value, int pow)
-{
-	int result;
-
-	result = 1;
-	while (--pow > 0)
-	{
-		result *= 10;
-	}
-	return (result * value);
-}
-
-static size_t	strlen_from_int(int value)
+static size_t	strlen_from_int(int value, int sign)
 {
 	size_t result;
 
-	result = 1;
-	if (value < 0)
+	result = 0;
+	if (sign == -1)
 		result++;
 	else if (value == 0)
-		return (2);
+		return (1);
 	while (value != 0)
 	{
 		value = value / 10;
@@ -43,31 +31,37 @@ static size_t	strlen_from_int(int value)
 	return (result);
 }
 
-char			*ft_itoa(int n)
+static char		*ft_itoa_int(int n, int buf, int min_i, int sign)
 {
-	char	*str;
-	size_t	i;
-	int		sign;
-	int		pow_value;
 	size_t	len;
+	int		i;
+	char	*str;
 
-	pow_value = 0;
-	i = 0;
-	sign = 1;
-	len = strlen_from_int(n);
-	str = (char*)malloc(sizeof(char) * len);
+	len = strlen_from_int(n, sign);
+	i = len;
+	str = (char*)malloc(sizeof(char) * (len + 1));
 	if (!str)
 		return (NULL);
+	if (sign == -1)
+		str[0] = '-';
+	str[len] = '\0';
+	while (--i >= min_i)
+	{
+		str[i] = '0' + (n % 10);
+		n = n / 10;
+	}
+	str[len - 1] += buf;
+	return (str);
+}
+
+char			*ft_itoa(int n)
+{
 	if (n < 0)
 	{
-		sign = -1;
-		str[i++] = '-';
+		if (n - 1 > 0)
+			return (ft_itoa_int(-(n + 1), 1, 1, -1));
+		return (ft_itoa_int(-n, 0, 1, -1));
 	}
-	while (i < len)
-	{
-		pow_value = pow(1, len - i);
-		str[i++] = '0' + (sign * (((n % pow_value) / (pow_value / 10))));
-	}
-	str[i] = '\0';
-	return (str);
+	else
+		return (ft_itoa_int(n, 0, 0, 1));
 }

@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:38:18 by scarboni          #+#    #+#             */
-/*   Updated: 2019/11/25 16:58:28 by scarboni         ###   ########.fr       */
+/*   Updated: 2019/11/26 09:15:21 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,6 @@ static int	is_equal_to(char c, char const *set)
 		i++;
 	}
 	return (0);
-}
-
-static int	get_start_trimmed(char const *s1, char const *set)
-{
-	int i;
-
-	i = 0;
-	while (is_equal_to(s1[i], set) && s1[i] != '\0')
-		i++;
-	return (i);
 }
 
 static int	get_end_trimmed(char const *s1, char const *set, size_t len)
@@ -92,8 +82,10 @@ char		*ft_strtrim(char const *s1, char const *set)
 	if (!set)
 		return (ft_strdup(s1));
 	len = ft_strlen(s1);
-	start = get_start_trimmed(s1, set);
-	return (start == len) ? ft_strtrim_int_mini() : 
+	start = 0;
+	while (is_equal_to(s1[start], set) && s1[start] != '\0')
+		start++;
+	return (start == len) ? ft_strtrim_int_mini() :
 	ft_strtrim_int_full(len, start, s1, set);
 }
 

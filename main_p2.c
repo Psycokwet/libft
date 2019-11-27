@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:38:18 by scarboni          #+#    #+#             */
-/*   Updated: 2019/11/22 12:27:36 by scarboni         ###   ########.fr       */
+/*   Updated: 2019/11/27 12:17:31 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,64 @@ typedef struct substr_test_data_struct
 	char *s_good;
 } *s_substr_test_datas, s_substr_test_data;
 
+
+typedef struct itoa_test_data_struct
+{
+	char *s;
+	int *s_good;
+} *s_itoa_test_datas, s_itoa_test_data;
+
+
+int test_itoa(char* s_expect, int i_expect, int i)
+{
+	char* result = ft_itoa(i_expect);
+	if(strcmp(result, s_expect))
+	{
+		printf("test_itoa No [%d] KO for [%s], expected [%s]\n", i, result, s_expect);
+		return -1;
+	}
+	return 0;
+}
+
+int test_itoa_int(void)
+{
+	int i = 0;
+
+	const int MAX = 10;
+	char *s_expected[10] =
+	{
+		"0",
+		"9",
+		"-9",
+		"10",
+		"-10",
+		"8124",
+		"-9874",
+		"543000",
+		"-2147483648",
+		"2147483647"
+	};
+	int i_expected[10] =
+	{
+		0,
+		9,
+		-9,
+		10,
+		-10,
+		8124,
+		-9874,
+		543000,
+		-2147483648LL,
+		2147483647,
+	};
+	int r = 0;
+	while (i < MAX)
+	{
+		r += test_itoa(s_expected[i],i_expected[i], i);
+		i++;
+	}
+	return r;
+}
 
 int test_substr(s_substr_test_datas sample_data, int i)
 {
@@ -292,5 +350,6 @@ int		main(int argc, char **argv)
 	print_errors("ft_substr", test_substr_int());
 	print_errors("ft_strjoin", test_strjoin_int());
 	print_errors("ft_strtrim", test_strtrim_int());
+	print_errors("ft_itoa", test_itoa_int());
 	return (0);
 }
