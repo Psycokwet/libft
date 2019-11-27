@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:38:18 by scarboni          #+#    #+#             */
-/*   Updated: 2019/11/27 12:17:31 by scarboni         ###   ########.fr       */
+/*   Updated: 2019/11/27 12:40:25 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,45 @@ typedef struct substr_test_data_struct
 	char *s_good;
 } *s_substr_test_datas, s_substr_test_data;
 
-
-typedef struct itoa_test_data_struct
+int test_putnbr_fd(int i_expect, int i)
 {
-	char *s;
-	int *s_good;
-} *s_itoa_test_datas, s_itoa_test_data;
+	printf("test_putnbr_fd visual No [%d], expected [%d]\n", i, i_expect);
+	ft_putnbr_fd(i_expect, 1);
+	printf("\n");
+	//if(strcmp(result, s_expect))
+	// {
+	// 	printf("test_itoa No [%d] KO for [%s], expected [%s]\n", i, result, s_expect);
+	// 	return -1;
+	// }
+	return 0;
+}
 
+int test_putnbr_fd_int(void)
+{
+	int i = 0;
 
+	const int MAX = 10;
+	int i_expected[10] =
+	{
+		0,
+		9,
+		-9,
+		10,
+		-10,
+		8124,
+		-9874,
+		543000,
+		-2147483648LL,
+		2147483647,
+	};
+	int r = 0;
+	while (i < MAX)
+	{
+		r += test_putnbr_fd(i_expected[i], i);
+		i++;
+	}
+	return r;
+}
 int test_itoa(char* s_expect, int i_expect, int i)
 {
 	char* result = ft_itoa(i_expect);
@@ -351,5 +382,6 @@ int		main(int argc, char **argv)
 	print_errors("ft_strjoin", test_strjoin_int());
 	print_errors("ft_strtrim", test_strtrim_int());
 	print_errors("ft_itoa", test_itoa_int());
+	print_errors("ft_putnbr_fd", test_putnbr_fd_int());
 	return (0);
 }
