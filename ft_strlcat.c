@@ -6,13 +6,11 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:38:18 by scarboni          #+#    #+#             */
-/*   Updated: 2019/11/18 12:44:01 by scarboni         ###   ########.fr       */
+/*   Updated: 2019/11/27 14:29:15 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
-#include <libc.h>
 
 size_t	ft_strlcat(char *dst, const char *src, size_t dst_len_mx)
 {

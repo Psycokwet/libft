@@ -6,12 +6,11 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:38:18 by scarboni          #+#    #+#             */
-/*   Updated: 2019/11/07 10:59:01 by scarboni         ###   ########.fr       */
+/*   Updated: 2019/11/27 14:29:48 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 char	*ft_strrchr(const char *s, int c)
 {
@@ -22,9 +21,7 @@ char	*ft_strrchr(const char *s, int c)
 	{
 		size--;
 		if (s[size] == c)
-		{
 			return ((char*)&s[size]);
-		}
 	}
 	return (NULL);
 }
