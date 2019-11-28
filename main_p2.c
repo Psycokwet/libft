@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:38:18 by scarboni          #+#    #+#             */
-/*   Updated: 2019/11/27 12:40:25 by scarboni         ###   ########.fr       */
+/*   Updated: 2019/11/28 14:28:51 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,9 +117,17 @@ int test_itoa_int(void)
 
 int test_substr(s_substr_test_datas sample_data, int i)
 {
-	if(strcmp(ft_substr(sample_data->s, sample_data->start, sample_data->len), sample_data->s_good))
+	char *res = ft_substr(sample_data->s, sample_data->start, sample_data->len);
+	if(res == sample_data->s_good && !res)
+		return 0;
+	else if(!res || !sample_data->s_good)
 	{
-		printf("test_substr No [%d] KO for [%s][%d][%d], expected [%s]\n", i, sample_data->s, sample_data->start, sample_data->len, sample_data->s_good);
+		printf("atest_substr No [%d] KO for [%s][%d][%d], expected [%s], got [%s]\n", i, sample_data->s, sample_data->start, sample_data->len, sample_data->s_good, res);
+		return -1;
+	}
+	if(strcmp(res, sample_data->s_good))
+	{
+		printf("test_substr No [%d] KO for [%s][%d][%d], expected [%s], got [%s]\n", i, sample_data->s, sample_data->start, sample_data->len, sample_data->s_good, res);
 		return -1;
 	}
 	return 0;
@@ -141,53 +149,53 @@ int test_substr_int(void)
 	char *s_goods[48] =
 	{
 		"",
+		NULL,
+		NULL,
+		NULL,
 		"",
+		NULL,
+		NULL,
+		NULL,
 		"",
-		"",
-		"",
-		"",
-		"",
-		"",
-		"",
-		"",
-		"",
-		"",
-		"",
-		"E",
-		"Ex",
-		"Extra",
+		NULL,
+		NULL,
+		NULL,
+		NULL,
+		NULL,
+		NULL,
+		NULL,
 		"",
 		"c",
 		"ct",
 		"ct fr",
 		"",
-		"",
-		"",
-		"",
+		NULL,
+		NULL,
+		NULL,
 		"",
 		"a",
 		"ab",
-		"abc",
-		"",
-		"'",
-		"'m",
-		"'m Hi",
-		"",
-		"e",
-		"e ",
-		"e too",
+		NULL,
+		NULL,
+		NULL,
+		NULL,
+		NULL,
+		NULL,
+		NULL,
+		NULL,
+		NULL,
 		"",
 		"a",
 		"ab",
 		"abcde",
 		"",
-		"f",
-		"fe",
-		"fef",
+		"e",
+		"ef",
+		NULL,
 		"",
-		"",
-		"",
-		"",
+		NULL,
+		NULL,
+		NULL,
 	};
 	char *str[4] =
 	{
@@ -211,18 +219,18 @@ int test_substr_int(void)
 			0
 		},
 		{
-			0,
+			20,
 			5,
 			ft_strlen(str[1])
 		},
 		{
 			0,
-			5,
+			4,
 			19
 		},
 		{
 			0,
-			5,
+			4,
 			ft_strlen(str[3])
 		}
 	};

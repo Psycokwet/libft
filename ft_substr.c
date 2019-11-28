@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:38:18 by scarboni          #+#    #+#             */
-/*   Updated: 2019/11/27 14:30:24 by scarboni         ###   ########.fr       */
+/*   Updated: 2019/11/28 14:31:36 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,12 @@ static char	*ft_substr_int(const char *src, size_t len)
 
 char		*ft_substr(char const *s, unsigned int start, size_t len)
 {
+	size_t len_s;
+
 	if (!s)
+		return (NULL);
+	len_s = ft_strlen(s);
+	if (len_s < (start + len))
 		return (NULL);
 	return (ft_substr_int(s + start, len + 1));
 }
