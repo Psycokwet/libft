@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:38:18 by scarboni          #+#    #+#             */
-/*   Updated: 2019/11/25 15:24:28 by scarboni         ###   ########.fr       */
+/*   Updated: 2019/11/28 14:36:37 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,5 @@ void	ft_lstadd_back(t_list **alst, t_list *new)
 	if (!(*alst))
 		*alst = new;
 	else
-		(*alst)->next = new;
+		ft_lstlast(*alst)->next = new;
 }
