@@ -6,12 +6,13 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:38:18 by scarboni          #+#    #+#             */
-/*   Updated: 2019/11/29 14:25:17 by scarboni         ###   ########.fr       */
+/*   Updated: 2019/11/29 15:10:04 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 static int	set_jump_and_fragment_size(char const *s, char c, size_t *jump,
 size_t *size_fragment)
@@ -36,14 +37,24 @@ size_t *size_fragment)
 	return (0);
 }
 
-static char	*ft_strdup_int(const char *src, size_t len)
+static int	ft_add_to_splitted_int(const char *src, size_t len,
+char ***splitted, size_t *j)
 {
 	char	*dst;
+	size_t	i;
 
 	dst = malloc(len * sizeof(char));
-	if (dst)
-		ft_strlcpy(dst, src, len);
-	return (dst);
+	if (!dst)
+	{
+		i = 0;
+		while (i < (*j))
+			free((*splitted)[i]);
+		free(*splitted);
+		return (-1);
+	}
+	ft_strlcpy(dst, src, len);
+	(*splitted)[(*j)++] = dst;
+	return (0);
 }
 
 static int	get_split_datas(const char *s, char c, size_t size_s)
@@ -84,16 +95,18 @@ int n_of_split)
 	splitted = (char**)malloc(sizeof(char*) * (n_of_split + 1));
 	if (!splitted)
 		return (NULL);
-	splitted[j++] = ft_strdup_int(&s[jump_n], size_fragment_n + 1);
+	if (ft_add_to_splitted_int(&s[jump_n], size_fragment_n + 1, &splitted, &j))
+		return (NULL);
 	i_n = jump_n + size_fragment_n;
 	while (i_n < size_s)
 	{
 		if (set_jump_and_fragment_size(s + i_n, c, &jump_n, &size_fragment_n))
 			return (splitted);
-		splitted[j++] = ft_strdup_int(&s[i_n + jump_n], size_fragment_n + 1);
-		i_n += jump_n + size_fragment_n + 1;
+		if (ft_add_to_splitted_int(&s[i_n + jump_n], size_fragment_n + 1,
+		&splitted, &j))
+			return (NULL);
+		i_n += jump_n + size_fragment_n;
 	}
-	splitted[j] = NULL;
 	return (splitted);
 }
 
@@ -117,6 +130,8 @@ char		**ft_split(char const *s, char c)
 		return (splitted);
 	}
 	splitted = fill_split_datas(s, c, size_s, n_of_split);
+	if (splitted != NULL)
+		splitted[n_of_split] = NULL;
 	return (splitted);
 }
 

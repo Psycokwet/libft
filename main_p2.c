@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:38:18 by scarboni          #+#    #+#             */
-/*   Updated: 2019/11/29 14:06:03 by scarboni         ###   ########.fr       */
+/*   Updated: 2019/11/29 14:49:31 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -336,10 +336,10 @@ int test_split(char *s, char sep, char *s_finale, int i)
 				k  = 0;
 				while(result[k] != NULL)
 				{
-					printf("[%s]\n", result[k]);
+					printf("\t[%s]\n", result[k]);
 					k++;
 				}
-				printf("[%s]\n", result[k]);
+				printf("\t[%s]\n", result[k]);
 				printf("]\n");
 				return -1;
 			}
@@ -380,6 +380,7 @@ int test_split_int(void)
 		r = test_split(s[i], '-', s_finales[i], i) + r;
 		i++;
 	}
+	r = test_split("      split       this for   me  !       ", ' ', "splitthisforme!", i) + r;
 	return r;
 }
 

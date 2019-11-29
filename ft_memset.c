@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:38:18 by scarboni          #+#    #+#             */
-/*   Updated: 2019/11/06 11:02:43 by scarboni         ###   ########.fr       */
+/*   Updated: 2019/11/29 14:30:28 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	*ft_memset(void *memory_space, int value, size_t len)
 {
 	while (len > 0)
 	{
-		((unsigned char*)memory_space)[--len] = value;
+		((unsigned char*)memory_space)[--len] = (unsigned char)value;
 	}
 	return (memory_space);
 }
