@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:38:18 by scarboni          #+#    #+#             */
-/*   Updated: 2019/11/27 17:43:36 by scarboni         ###   ########.fr       */
+/*   Updated: 2019/11/29 14:25:17 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,12 @@ static int	get_split_datas(const char *s, char c, size_t size_s)
 	size_t	size_fragment_n;
 	size_t	jump_n;
 
-	n_of_split = 1;
+	n_of_split = 0;
 	if (set_jump_and_fragment_size(s, c, &jump_n, &size_fragment_n))
 		return (0);
 	i_n = jump_n + size_fragment_n;
+	if (size_fragment_n > 0)
+		n_of_split++;
 	while (i_n < size_s)
 	{
 		if (set_jump_and_fragment_size(s + i_n, c, &jump_n, &size_fragment_n))
@@ -79,7 +81,7 @@ int n_of_split)
 	j = 0;
 	if (set_jump_and_fragment_size(s, c, &jump_n, &size_fragment_n))
 		return (NULL);
-	splitted = (char**)malloc(sizeof(char*) * n_of_split);
+	splitted = (char**)malloc(sizeof(char*) * (n_of_split + 1));
 	if (!splitted)
 		return (NULL);
 	splitted[j++] = ft_strdup_int(&s[jump_n], size_fragment_n + 1);

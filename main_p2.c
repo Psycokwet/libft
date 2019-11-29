@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:38:18 by scarboni          #+#    #+#             */
-/*   Updated: 2019/11/28 14:28:51 by scarboni         ###   ########.fr       */
+/*   Updated: 2019/11/29 14:06:03 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -317,6 +317,72 @@ int test_strjoin_int(void)
 }
 
 
+int test_split(char *s, char sep, char *s_finale, int i)
+{
+	char **result = ft_split(s, sep);
+	int k = 0;
+	int kk = 0;
+	int j = 0;
+
+	while(result[k] != NULL)
+	{
+		while(result[k][kk] != '\0')
+		{
+			if(result[k][kk] != s_finale[j])
+			{
+				printf("test_split No [%d] KO for [%s][%c], expected [%c], got [%c]\n", i, s, sep, s_finale[j], result[k][kk]);
+				
+				printf("[");
+				k  = 0;
+				while(result[k] != NULL)
+				{
+					printf("[%s]\n", result[k]);
+					k++;
+				}
+				printf("[%s]\n", result[k]);
+				printf("]\n");
+				return -1;
+			}
+			j++;
+			kk++;
+		}
+		kk = 0;
+		k++;
+	}
+	return 0;
+}
+
+int test_split_int(void)
+{
+	int i = 0;
+
+	const int MAX = 5;
+	char *s_finales[5] =
+	{
+		"MAKELIBFTGREATAGAIN!",
+		"",
+		"MAKELIBFTGREATAGAIN!",
+		"MAKELIBFTGREATAGAIN!",
+		"MAKELIBFTGREATAGAIN!",
+	};
+
+	char *s[5] =
+	{
+		"M-A-K-E-L-I-B-F-T-G-R-E-A-T-A-G-A-I-N-!-",
+		"",
+		"M-----A-K-E-L-I-B-F-T-G------R-E-A-T-A-G-A-I------N-!-",
+		"------M-A-K-E-L-I-B------F-T-G-R-E-A-----T-A-G-A-I-N-!------",
+		"MAKELIBFTGREATAGAIN!",
+	};
+	int r = 0;
+	while (i < MAX)
+	{
+		r = test_split(s[i], '-', s_finales[i], i) + r;
+		i++;
+	}
+	return r;
+}
+
 int test_strtrim(char *s, char *set, char *s_finale, int i)
 {
 	char *result = ft_strtrim(s, set);
@@ -391,5 +457,6 @@ int		main(int argc, char **argv)
 	print_errors("ft_strtrim", test_strtrim_int());
 	print_errors("ft_itoa", test_itoa_int());
 	print_errors("ft_putnbr_fd", test_putnbr_fd_int());
+	print_errors("test_split_int", test_split_int());
 	return (0);
 }
