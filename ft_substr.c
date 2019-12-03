@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:38:18 by scarboni          #+#    #+#             */
-/*   Updated: 2019/11/28 14:31:36 by scarboni         ###   ########.fr       */
+/*   Updated: 2019/12/03 18:58:24 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,10 @@ char		*ft_substr(char const *s, unsigned int start, size_t len)
 	if (!s)
 		return (NULL);
 	len_s = ft_strlen(s);
-	if (len_s < (start + len))
-		return (NULL);
+	if (len_s <= start)
+		return (ft_substr_int(s + start, 1));
+	else if (len_s <= (start + len))
+		return (ft_substr_int(s + start, ((start + len) - len_s) + 1));
 	return (ft_substr_int(s + start, len + 1));
 }
 /*

@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:38:18 by scarboni          #+#    #+#             */
-/*   Updated: 2019/11/29 14:49:31 by scarboni         ###   ########.fr       */
+/*   Updated: 2019/12/03 18:51:46 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -459,5 +459,24 @@ int		main(int argc, char **argv)
 	print_errors("ft_itoa", test_itoa_int());
 	print_errors("ft_putnbr_fd", test_putnbr_fd_int());
 	print_errors("test_split_int", test_split_int());
+
+
+	char *tst = "test";
+	int start;
+	int len;
+
+	start = 0;
+	len = 1;
+	printf("result for [%s] start [%d] len [%d] :\n[%s]\n", "", start, len, ft_substr(tst, start, len));
+	printf("Moulinette : Error for value \"\" and start \"0\" with a len of \"1\" - Expected:  - Got: (null)\n");
+	start = 10;
+	len = 1;
+	printf("result for [%s] start [%d] len [%d] :\n[%s]\n", tst, start, len, ft_substr(tst, start, len));
+	printf("Moulinette : Error for value \"test\" and start \"10\" with a len of \"1\" - Expected:  - Got: (null)\n");
+	start = 1;
+	len = 6;
+	printf("result for [%s] start [%d] len [%d] :\n[%s]\n", tst, start, len, ft_substr(tst, start, len));
+	printf("Moulinette : Error for value \"test\" and start \"1\" with a len of \"6\" - Expected: est - Got: (null)");
+
 	return (0);
 }
