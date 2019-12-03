@@ -62,7 +62,7 @@ OBJBONUS		=	$(SRCBONUS:.c=.o) 					## get all .o names from .c names
 
 CC			=	cc
 
-CFLAGS		+=	-W -Wall -Wextra -Werror -g3 -pedantic		## '+=' allow to keep default flags.
+CFLAGS		+=	-W -Wall -Wextra -Werror -g3 -pedantic 		## '+=' allow to keep default flags.
 
 LDFLAGS		= 	libft.a							## example : -L/home/user/lib -lmyLib/ ou pas en fait
 

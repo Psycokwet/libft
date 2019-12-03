@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:38:18 by scarboni          #+#    #+#             */
-/*   Updated: 2019/11/27 16:02:15 by scarboni         ###   ########.fr       */
+/*   Updated: 2019/12/03 16:17:48 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,15 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	size_t size;
+	size_t	i;
+	char	*result;
 
-	size = ft_strlen(s) + 1;
-	while (size > 0)
-	{
-		size--;
-		if ((unsigned char)s[size] == c)
-			return ((char*)&s[size]);
-	}
-	return (NULL);
+	i = -1;
+	result = NULL;
+	while (s[++i])
+		if ((unsigned char)s[i] == c)
+			result = ((char*)&s[i]);
+	if ((unsigned char)s[i] == c)
+		result = ((char*)&s[i]);
+	return (result);
 }

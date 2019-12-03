@@ -6,13 +6,12 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:38:18 by scarboni          #+#    #+#             */
-/*   Updated: 2019/11/29 15:10:04 by scarboni         ###   ########.fr       */
+/*   Updated: 2019/11/29 16:04:38 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
-#include <stdio.h>
 
 static int	set_jump_and_fragment_size(char const *s, char c, size_t *jump,
 size_t *size_fragment)

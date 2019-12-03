@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:38:18 by scarboni          #+#    #+#             */
-/*   Updated: 2019/11/12 16:02:13 by scarboni         ###   ########.fr       */
+/*   Updated: 2019/11/29 15:31:08 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,9 @@ void	*ft_memchr(const void *s, int c, size_t len)
 {
 	size_t i;
 
-	i = 0;
-	while (i < len)
-	{
+	i = -1;
+	while (++i < len)
 		if (((unsigned char*)s)[i] == (unsigned char)c)
-		{
 			return (void *)&(((unsigned char*)s)[i]);
-		}
-		i++;
-	}
 	return (NULL);
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_p1.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:38:18 by scarboni          #+#    #+#             */
-/*   Updated: 2019/11/19 10:10:34 by scarboni         ###   ########.fr       */
+/*   Updated: 2019/11/29 16:35:22 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,32 +20,63 @@
 void mem_test();
 void *ft_memset(void *b, int c, size_t len);
 
-//
-void test_is_all(char c)
+void print_errors(char * function_name, int n_errors)
 {
-	printf("test for %c\n", c);
+	printf("%s... \t[%d] errors detected\n", function_name, -n_errors);
+}
+
+
+int test_is_all(char c)
+{
+	int r = 0;
 	if(isalpha(c) != ft_isalpha(c)){
 		printf("ft_isalpha %c: %d : %d\n", c, isalpha(c),ft_isalpha(c));
+		r++;
 	}
 	if(isdigit(c) != ft_isdigit(c)){
 		printf("ft_isdigit %c: %d : %d\n", c, isdigit(c),ft_isdigit(c));
+		r++;
 	}
 	if(isalnum(c) != ft_isalnum(c)){
 		printf("ft_isalnum %c: %d : %d\n", c, isalnum(c),ft_isalnum(c));
+		r++;
 	}
 	if(isascii(c) !=ft_isascii(c)){
 		printf("ft_isascii %c: %d : %d\n", c, isascii(c),ft_isascii(c));
+		r++;
 	}
 	if(isprint(c) !=ft_isprint(c)){
 		printf("ft_isprint %c: %d : %d\n", c, isprint(c),ft_isprint(c));
+		r++;
 	}
 	if(toupper(c) !=ft_toupper(c)){
 		printf("ft_toupper %c: %c : %c\n", c, toupper(c),ft_toupper(c));
+		r++;
 	}
 	if(tolower(c) !=ft_tolower(c)){
 		printf("ft_tolower %c: %c : %c\n", c, tolower(c),ft_tolower(c));
+		r++;
 	}
+	return r;
 } 
+
+int test_is_all_int()
+{
+	int r = 0;
+	r = test_is_all('@');
+	r += test_is_all('a');
+	r += test_is_all('b');
+	r += test_is_all('A');
+	r += test_is_all('B');
+	r += test_is_all('!');
+	r += test_is_all('1');
+	r += test_is_all('9');
+	r += test_is_all(-1);
+	r += test_is_all(0);
+	r += test_is_all(127);
+	return r;
+}
+
 //
 void test_c_s_all(char c, char *s)
 {
@@ -83,16 +114,19 @@ void test_memcpy(void *dst1, void *dst2, void *src1, size_t len)
 	printf("%s:\n%s:\n", dst1, dst2);
 }
 //
-void test_memccpy(void *dst1, void *dst2, void *src, int value, size_t len)
+int test_memccpy(int i, void *dst1, void *dst2, void *src, int value, size_t len)
 {
-	printf("test for ft_memccpy %s;%s;%s;%c,%lu\n", dst1, dst2, src, value, len);
-	
 	dst1 = memccpy(dst1,src,value,len);
 	dst2 = ft_memccpy(dst2,src,value,len);
-	printf("%s:\n%s:\n", dst1, dst2);
+	if(strcmp(dst2, dst1))
+	{
+		printf("test_strjoin No [%d] KO for [%s][%d][%lu]\n\t\t\t[%s], expected\t[%s]\n", i, src, value, len, dst2, dst1);
+		return -1;
+	}
+	return 0;
 }
 //
-void test_memset(void *dst1, void *dst2, int value, size_t len)
+int test_memset(void *dst1, void *dst2, int value, size_t len)
 {
 	printf("test for ft_memset %s;%s;%d;%lu\n", dst1, dst2, value, len);
 	
@@ -161,7 +195,11 @@ void test_memcmp(void *s1, void *s2, size_t len)
 	}
 }
 //
-void mem_test(){
+
+
+int test_all_mem_int()
+{
+	int r = 0;
 	size_t len;
 	
 	len = 10;
@@ -169,44 +207,45 @@ void mem_test(){
 	unsigned char* tstcpy = ft_calloc(len, sizeof(char));
 
 	int ft = 'a';
-	test_memset(tst, tstcpy, ft, len);
+	r += test_memset(tst, tstcpy, ft, len);
 	ft = 'b';
-	test_memset(tst, tstcpy, ft, len);
-	test_bzero(tst, len);
+	r += test_memset(tst, tstcpy, ft, len);
+	r += test_bzero(tst, len);
 
-	test_memcpy(tst, tstcpy, "Hello", 2);
-	test_memcpy(tst, tstcpy, "Pony", 2);
-	test_memccpy(tst, tstcpy, "Hello", 'e', 4);
-	test_memccpy(tst, tstcpy, "Pony", 'y', 4);
+	r += test_memcpy(tst, tstcpy, "Hello", 2);
+	r += test_memcpy(tst, tstcpy, "Pony", 2);
+	r += test_memccpy(tst, tstcpy, "Hello", 'e', 4);
+	r += test_memccpy(tst, tstcpy, "Pony", 'y', 4);
 
 	//memmove
-	ft_memcpy(tstcpy, "Helo;", 4);
-	memmove(tstcpy + 1 , tstcpy, 4);
+	r += ft_memcpy(tstcpy, "Helo;", 4);
+	r += memmove(tstcpy + 1 , tstcpy, 4);
 	printf("memmove : %s;\n", tstcpy);
 	
-	ft_memcpy(tstcpy, "Pony;", 4);
-	ft_memmove(tstcpy + 1, tstcpy, 4);
+	r += ft_memcpy(tstcpy, "Pony;", 4);
+	r += ft_memmove(tstcpy + 1, tstcpy, 4);
 	printf("ft_memmove : %s;\n", tstcpy);
 
-	ft_memcpy(tstcpy, "Helo;", 4);
-	memmove(tstcpy  , tstcpy+ 1, 4);
+	r += ft_memcpy(tstcpy, "Helo;", 4);
+	r += memmove(tstcpy  , tstcpy+ 1, 4);
 	printf("memmove : %s;\n", tstcpy);
 	
-	ft_memcpy(tstcpy, "Pony;", 4);
-	ft_memmove(tstcpy , tstcpy+ 1, 4);
+	r += ft_memcpy(tstcpy, "Pony;", 4);
+	r += ft_memmove(tstcpy , tstcpy+ 1, 4);
 	printf("ft_memmove : %s;\n", tstcpy);
 
 	// /memove
-	test_memchr(tstcpy,  'y',  4);
-	test_memchr(tstcpy,  '\0',  4);
-	test_memchr(tstcpy,  'z',  4);
+	r += test_memchr(tstcpy,  'y',  4);
+	r += test_memchr(tstcpy,  '\0',  4);
+	r += test_memchr(tstcpy,  'z',  4);
 	
-	test_memcmp("Hello",  "Helxo",  5);
+	r += test_memcmp("Hello",  "Helxo",  5);
 	
 	printf("ft_strlen : %lu : %lu\n", strlen("Hello"),ft_strlen("Hello"));
 
 	free(tst);
 	free(tstcpy);
+	return r;
 }
 
 void test_int_strlcat(char* dst1, char* dst2, int len, char* src)
@@ -368,20 +407,12 @@ int		main(int argc, char **argv)
 {
 	(void)argc ;
 	(void)argv ;
-	
-    mem_test();
 
-	test_is_all('@');
-	test_is_all('a');
-	test_is_all('b');
-	test_is_all('A');
-	test_is_all('B');
-	test_is_all('!');
-	test_is_all('1');
-	test_is_all('9');
-	test_is_all(-1);
-	test_is_all(0);
-	test_is_all(127);
+	print_errors("test_is_all", test_is_all_int());
+	print_errors("test_all_mem", test_all_mem_int());
+
+
+    mem_test();
 	
 	test_c_s_all('P', "Pony");
 	test_c_s_all('\0', "Pony");

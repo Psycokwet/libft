@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:38:18 by scarboni          #+#    #+#             */
-/*   Updated: 2019/11/27 14:26:56 by scarboni         ###   ########.fr       */
+/*   Updated: 2019/11/29 17:11:57 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,7 @@ static int	skip_blanks(const char *str)
 
 	i = 0;
 	while (str[i] == ' ' || (str[i] > 8 && str[i] < 14))
-	{
 		i++;
-	}
 	return (i);
 }
 
@@ -30,9 +28,7 @@ static int	pow(int value, int pow)
 
 	result = 1;
 	while (--pow > 0)
-	{
 		result *= 10;
-	}
 	return (result * value);
 }
 

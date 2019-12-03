@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:38:18 by scarboni          #+#    #+#             */
-/*   Updated: 2019/11/12 15:53:49 by scarboni         ###   ########.fr       */
+/*   Updated: 2019/12/03 15:36:21 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,10 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 {
 	if (!dst && !src)
 		return (dst);
-	if (dst <= src)
+	if (dst < src)
 		reverse_ft_memcpy(dst, src, len);
+	else if (dst == src)
+		return (dst);
 	else if (dst > src)
 		ft_memcpy(dst, src, len);
 	return (dst);
