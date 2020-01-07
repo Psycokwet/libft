@@ -6,11 +6,12 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:38:18 by scarboni          #+#    #+#             */
-/*   Updated: 2019/11/29 17:11:57 by scarboni         ###   ########.fr       */
+/*   Updated: 2019/12/04 16:45:55 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 static int	skip_blanks(const char *str)
 {
@@ -20,16 +21,6 @@ static int	skip_blanks(const char *str)
 	while (str[i] == ' ' || (str[i] > 8 && str[i] < 14))
 		i++;
 	return (i);
-}
-
-static int	pow(int value, int pow)
-{
-	int result;
-
-	result = 1;
-	while (--pow > 0)
-		result *= 10;
-	return (result * value);
 }
 
 static int	set_sign(int *i, const char *str)
@@ -48,21 +39,15 @@ int			ft_atoi(const char *str)
 {
 	int		value;
 	int		i;
-	size_t	size;
 	int		sign;
 
 	value = 0;
 	i = skip_blanks(str);
 	sign = set_sign(&i, str);
-	size = ft_strlen(str);
-	while (str[i] != '\0' && ft_isdigit(str[i]))
+	while (ft_isdigit(str[i]))
 	{
-		value = (pow((str[i] - '0'), size - i) * sign) + value;
-		if ((sign < 0 && value > 0))
-			return (0);
-		else if ((sign > 0 && value < 0))
-			return (-1);
+		value = (value * 10) + (str[i] - '0');
 		i++;
 	}
-	return (value) / (pow(1, size - --i));
+	return (value * sign);
 }

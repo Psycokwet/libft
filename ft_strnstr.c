@@ -6,15 +6,18 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:38:18 by scarboni          #+#    #+#             */
-/*   Updated: 2019/11/29 15:29:37 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/01/07 14:50:13 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
-static void	init(size_t *j, int *start_pattern)
+static void	init(size_t *j, int *start_pattern, size_t *i)
 {
 	*j = 0;
+	if (*start_pattern != -1)
+		*i = (size_t)(*start_pattern + 1);
 	*start_pattern = -1;
 }
 
@@ -26,8 +29,9 @@ char		*ft_strnstr(const char *haystack, const char *needle, size_t len)
 
 	if (needle[0] == '\0')
 		return ((char*)haystack);
+	j = 0;
+	start_pattern = -1;
 	i = -1;
-	init(&j, &start_pattern);
 	while (++i < len && haystack[i] != '\0')
 	{
 		if (haystack[i] == needle[j])
@@ -39,7 +43,7 @@ char		*ft_strnstr(const char *haystack, const char *needle, size_t len)
 				return ((char*)&haystack[start_pattern]);
 		}
 		else
-			init(&j, &start_pattern);
+			init(&j, &start_pattern, &i);
 	}
 	return (NULL);
 }

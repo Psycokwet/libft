@@ -6,14 +6,24 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:38:18 by scarboni          #+#    #+#             */
-/*   Updated: 2019/12/03 18:58:24 by scarboni         ###   ########.fr       */
+/*   Updated: 2019/12/04 15:32:34 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-static char	*ft_substr_int(const char *src, size_t len)
+static size_t	ft_strnlen(const char *s, size_t len_max)
+{
+	size_t i;
+
+	i = 0;
+	while (i < len_max && s[i] != '\0')
+		i++;
+	return (i);
+}
+
+static char		*ft_substr_int(const char *src, size_t len)
 {
 	char	*dst;
 
@@ -23,17 +33,21 @@ static char	*ft_substr_int(const char *src, size_t len)
 	return (dst);
 }
 
-char		*ft_substr(char const *s, unsigned int start, size_t len)
+char			*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	size_t len_s;
+	size_t len_int;
 
 	if (!s)
 		return (NULL);
-	len_s = ft_strlen(s);
-	if (len_s <= start)
-		return (ft_substr_int(s + start, 1));
-	else if (len_s <= (start + len))
-		return (ft_substr_int(s + start, ((start + len) - len_s) + 1));
+	len_s = ft_strnlen(s, len + start);
+	if (len_s < start)
+		return (ft_strdup(""));
+	else if (len_s < (start + len))
+	{
+		len_int = len_s - start;
+		return (ft_substr_int(s + start, (len < len_int ? len : len_int) + 1));
+	}
 	return (ft_substr_int(s + start, len + 1));
 }
 /*
