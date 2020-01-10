@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:38:18 by scarboni          #+#    #+#             */
-/*   Updated: 2020/01/09 13:40:26 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/01/10 12:42:54 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ static int	set_sign(int *i, const char *str)
 
 int			ft_atoi(const char *str)
 {
-	int		value;
+	long	value;
+	long	next_value;
 	int		i;
 	int		sign;
 
@@ -45,7 +46,12 @@ int			ft_atoi(const char *str)
 	sign = set_sign(&i, str);
 	while (ft_isdigit(str[i]))
 	{
-		value = (value * 10) + (str[i] - '0');
+		next_value = (value * 10) + (str[i] - '0');
+		if (sign == -1 && next_value < 0)
+			return (0);
+		if (sign == 1 && next_value < 0)
+			return (-1);
+		value = next_value;
 		i++;
 	}
 	return (value * sign);
