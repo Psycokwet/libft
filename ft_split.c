@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:38:18 by scarboni          #+#    #+#             */
-/*   Updated: 2019/11/29 16:04:38 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/01/09 13:58:50 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ char ***splitted, size_t *j)
 	char	*dst;
 	size_t	i;
 
-	dst = malloc(len * sizeof(char));
+	dst = (char *)malloc(len * sizeof(char));
 	if (!dst)
 	{
 		i = 0;

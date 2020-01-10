@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:38:18 by scarboni          #+#    #+#             */
-/*   Updated: 2019/12/03 18:51:46 by scarboni         ###   ########.fr       */
+/*   Updated: 2019/12/04 15:04:47 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,41 +149,41 @@ int test_substr_int(void)
 	char *s_goods[48] =
 	{
 		"",
-		NULL,
-		NULL,
-		NULL,
 		"",
-		NULL,
-		NULL,
-		NULL,
 		"",
-		NULL,
-		NULL,
-		NULL,
-		NULL,
-		NULL,
-		NULL,
-		NULL,
+		"",
+		"",
+		"",
+		"",
+		"",
+		"",
+		"",
+		"",
+		"",
+		"",
+		"",
+		"",
+		"",
 		"",
 		"c",
 		"ct",
 		"ct fr",
 		"",
-		NULL,
-		NULL,
-		NULL,
+		"",
+		"",
+		"",
 		"",
 		"a",
 		"ab",
-		NULL,
-		NULL,
-		NULL,
-		NULL,
-		NULL,
-		NULL,
-		NULL,
-		NULL,
-		NULL,
+		"abc",
+		"",
+		"",
+		"",
+		"",
+		"",
+		"",
+		"",
+		"",
 		"",
 		"a",
 		"ab",
@@ -191,11 +191,11 @@ int test_substr_int(void)
 		"",
 		"e",
 		"ef",
-		NULL,
+		"efef",
 		"",
-		NULL,
-		NULL,
-		NULL,
+		"",
+		"",
+		"",
 	};
 	char *str[4] =
 	{
@@ -467,7 +467,7 @@ int		main(int argc, char **argv)
 
 	start = 0;
 	len = 1;
-	printf("result for [%s] start [%d] len [%d] :\n[%s]\n", "", start, len, ft_substr(tst, start, len));
+	printf("result for [%s] start [%d] len [%d] :\n[%s]\n", "", start, len, ft_substr("", start, len));
 	printf("Moulinette : Error for value \"\" and start \"0\" with a len of \"1\" - Expected:  - Got: (null)\n");
 	start = 10;
 	len = 1;
