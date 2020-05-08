@@ -112,13 +112,11 @@ int n_of_split)
 char		**ft_split(char const *s, char c)
 {
 	int		n_of_split;
-	int		i;
 	size_t	size_s;
 	char	**splitted;
 
 	if (!s)
 		return (NULL);
-	i = 0;
 	size_s = ft_strlen(s);
 	n_of_split = get_split_datas(s, c, size_s);
 	if (n_of_split == 0)
