@@ -4,6 +4,7 @@ NAME		=	libft.a
 SRC_PATH		= ./
 OBJ_PATH		= bin/
 ## No need for a \ on the last line
+HEADERS_FILES	=	libft.h
 SRC_FILES	=		ft_memset.c			\
 					ft_bzero.c			\
 					ft_memcpy.c			\
@@ -66,9 +67,12 @@ RM			= 	rm -f
 
 all	: $(BONUS)
 
-$(OBJ_PATH)%.o: $(SRC_PATH)%.c
+test :
+	echo $(HEADERS_FILES)
+
+$(OBJ_PATH)%.o: $(SRC_PATH)%.c $(HEADERS_FILES)
 		mkdir -p $(OBJ_PATH)
-		$(CC) -o $@ -c $<
+		$(CC) -o $@ -c $< $(CFLAGS)
 
 $(NAME)		: 	$(OBJ)
 		ar -src $(NAME) $(OBJ)
