@@ -67,9 +67,6 @@ RM			= 	rm -f
 
 all	: $(BONUS)
 
-test :
-	echo $(HEADERS_FILES)
-
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c $(HEADERS_FILES)
 		mkdir -p $(OBJ_PATH)
 		$(CC) -o $@ -c $< $(CFLAGS)
