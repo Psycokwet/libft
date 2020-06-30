@@ -51,8 +51,14 @@ SRCBONUS_FILES	=	ft_lstnew.c			\
 					ft_lstiter.c		\
 					ft_lstmap.c			
 
-OBJ_FILES 		= 	$(SRC_FILES:.c=.o)			## get all .o names from .c names
-OBJBONUS_FILES	=	$(SRCBONUS_FILES:.c=.o) 					## get all .o names from .c names
+OBJREGULAR_FILES	= 	$(SRC_FILES:.c=.o)			## get all .o names from .c names
+OBJBONUS_FILES		=	$(SRCBONUS_FILES:.c=.o) 					## get all .o names from .c names
+
+ifdef WITH_BONUS
+OBJ_FILES = $(OBJREGULAR_FILES) $(OBJBONUS_FILES)
+else
+OBJ_FILES = $(OBJREGULAR_FILES)
+endif
 
 SRC 		= $(addprefix $(SRC_PATH), $(SRC_FILES))
 SRCBONUS 	= $(addprefix $(SRC_PATH), $(SRCBONUS_FILES))
@@ -65,7 +71,7 @@ CFLAGS		+=	-W -Wall -Wextra -Werror -g3 -pedantic 		## '+=' allow to keep defaul
 
 RM			= 	rm -f
 
-all	: $(BONUS)
+all	: $(NAME)
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c $(HEADERS_FILES)
 		mkdir -p $(OBJ_PATH)
@@ -74,9 +80,9 @@ $(OBJ_PATH)%.o: $(SRC_PATH)%.c $(HEADERS_FILES)
 $(NAME)		: 	$(OBJ)
 		ar -src $(NAME) $(OBJ)
 
-$(BONUS)	: $(NAME) $(OBJBONUS)
-		ar -src $(NAME) $(OBJBONUS)
-		
+$(BONUS)	:
+		$(MAKE) WITH_BONUS=1 all
+
 clean	:									## delete all .o
 		$(RM) $(OBJ) $(OBJBONUS)		
 
