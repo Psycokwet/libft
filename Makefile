@@ -71,7 +71,10 @@ CFLAGS		+=	-W -Wall -Wextra -Werror -g3 -pedantic 		## '+=' allow to keep defaul
 
 RM			= 	rm -f
 
-all	: $(NAME)
+all	: $(INIT_DIRECTORIES) $(NAME)
+
+$(INIT_DIRECTORIES)	:
+	mkdir -p $(OBJ_PATH)
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c $(HEADERS_FILES)
 		mkdir -p $(OBJ_PATH)
