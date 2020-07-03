@@ -4,6 +4,7 @@ INIT_DIRECTORIES = init_dir
 
 SRC_PATH		= ./
 OBJ_PATH		= bin/
+OBJ_PATHS_INIT	= 	$(OBJ_PATH)
 ## No need for a \ on the last line
 HEADERS_FILES	=	libft.h
 SRC_FILES	=		ft_memset.c			\
@@ -72,10 +73,10 @@ CFLAGS		+=	-W -Wall -Wextra -Werror -g3 -pedantic 		## '+=' allow to keep defaul
 
 RM			= 	rm -f
 
-all	: $(INIT_DIRECTORIES) $(NAME)
+all	: $(OBJ_PATHS_INIT) $(NAME)
 
-$(INIT_DIRECTORIES)	: 
-	mkdir -p $(OBJ_PATH)
+$(OBJ_PATHS_INIT)	:
+	mkdir -p  $@  
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c $(HEADERS_FILES)
 	$(CC) -o $@ -c $< $(CFLAGS)
