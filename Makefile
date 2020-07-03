@@ -77,20 +77,19 @@ $(INIT_DIRECTORIES)	:
 	mkdir -p $(OBJ_PATH)
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c $(HEADERS_FILES)
-		mkdir -p $(OBJ_PATH)
-		$(CC) -o $@ -c $< $(CFLAGS)
+	$(CC) -o $@ -c $< $(CFLAGS)
 
 $(NAME)		: 	$(OBJ)
-		ar -src $(NAME) $(OBJ)
+	ar -src $(NAME) $(OBJ)
 
 $(BONUS)	:
-		$(MAKE) WITH_BONUS=1 all
+	$(MAKE) WITH_BONUS=1 all
 
 clean	:									## delete all .o
-		$(RM) $(OBJ) $(OBJBONUS)		
+	$(RM) $(OBJ) $(OBJBONUS)		
 
 fclean	:	clean							## clean + delete executable
-		$(RM) $(NAMETEST) $(NAME)				
+	$(RM) $(NAMETEST) $(NAME)				
 
 re		:	fclean all							## delete all .o and recompile all. Must use when editing a .h
 
