@@ -1,5 +1,6 @@
 BONUS		=	bonus
-NAME		=	libft.a			
+NAME		=	libft.a
+INIT_DIRECTORIES = init_dir
 
 SRC_PATH		= ./
 OBJ_PATH		= bin/
@@ -73,7 +74,7 @@ RM			= 	rm -f
 
 all	: $(INIT_DIRECTORIES) $(NAME)
 
-$(INIT_DIRECTORIES)	:
+$(INIT_DIRECTORIES)	: 
 	mkdir -p $(OBJ_PATH)
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c $(HEADERS_FILES)
