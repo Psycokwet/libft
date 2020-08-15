@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:38:18 by scarboni          #+#    #+#             */
-/*   Updated: 2020/08/15 20:32:49 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/08/15 20:33:53 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ char		*ft_strtrim(char const *s1, char const *set)
 
 /*
 ** Alloue (avec malloc(3)) et retourne une copie de la
-** chaine de caractères donnee en argument, sans les
-** caractères specifies dans le set donne en argument
-** au debut et à la fin de la chaine de caractères.
+** chaine de caracteres donnee en argument, sans les
+** caracteres specifies dans le set donne en argument
+** au debut et à la fin de la chaine de caracteres.
 */
