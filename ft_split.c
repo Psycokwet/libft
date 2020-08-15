@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:38:18 by scarboni          #+#    #+#             */
-/*   Updated: 2020/01/09 13:58:50 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/08/15 20:26:15 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,9 +135,9 @@ char		**ft_split(char const *s, char c)
 /*
 ** Alloue (avec malloc(3)) et retourne un tableau
 ** de chaines de caracteres obtenu en séparant s à
-** l’aide du caractère c, utilisé comme délimiteur. Le
+** l'aide du caractère c, utilisé comme délimiteur. Le
 ** tableau doit être terminé par NULL.
 ** Return : Le tableau de nouvelles chaines de caractères,
-** résultant du découpage. NULL si l’allocation
+** résultant du découpage. NULL si l'allocation
 ** échoue.
 */
