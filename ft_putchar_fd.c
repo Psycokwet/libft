@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:38:18 by scarboni          #+#    #+#             */
-/*   Updated: 2020/01/07 15:41:24 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/08/15 20:22:31 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ void	ft_putchar_fd(char c, int fd)
 	write(fd, &c, 1);
 }
 /*
-** #1. Le caractère à écrire.
-** #2. Le file descriptor sur lequel écrire.
+** #1. Le caractere a ecrire.
+** #2. Le file descriptor sur lequel ecrire.
 ** Valeur de retour None
-** Fonctions externes autorisées
+** Fonctions externes autorisees
 ** write
-** Description Écrit le caractère ’c’ sur le file descriptor
-** donné.
+** Description : ecrit le caractere 'c' sur le file descriptor
+** donne.
 */
