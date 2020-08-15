@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:38:18 by scarboni          #+#    #+#             */
-/*   Updated: 2020/08/15 20:33:54 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/08/15 20:34:23 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,13 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 
 /*
 ** #1. La chaine de caracteres sur laquelle iterer
-** #2. La fonction à appliquer à chaque caractere.
+** #2. La fonction a appliquer a chaque caractere.
 ** Valeur de retour La chaine de caracteres resultant des applications
 ** successives de f. Retourne NULL si l'allocation
 ** echoue.
 ** Fonctions externes autorisees
 ** malloc
-** Description Applique la fonction 'f' à chaque caractere de la
+** Description Applique la fonction 'f' a chaque caractere de la
 ** chaine de caracteres passee en argument pour creer
 ** une nouvelle chaine de caracteres (avec malloc(3))
 ** resultant des applications successives de 'f'.

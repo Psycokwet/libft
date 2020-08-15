@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:38:18 by scarboni          #+#    #+#             */
-/*   Updated: 2020/08/15 20:32:49 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/08/15 20:34:23 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void		ft_putnbr_fd(int n, int fd)
 		ft_putnbr_fd_int(n, fd);
 }
 /*
-** #1. L'integer à ecrire.
+** #1. L'integer a ecrire.
 ** #2. Le file descriptor sur lequel ecrire.
 ** Valeur de retour None
 ** Fonctions externes autorisees

@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:38:18 by scarboni          #+#    #+#             */
-/*   Updated: 2020/08/15 20:33:53 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/08/15 20:34:23 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,6 @@ char			*ft_substr(char const *s, unsigned int start, size_t len)
 /*
 ** Alloue (avec malloc(3)) et retourne une chaine de
 ** caracteres issue de la chaine donnee en argument
-** Cette nouvelle chaine commence à l'index 'start' et
+** Cette nouvelle chaine commence a l'index 'start' et
 ** a pour taille maximale 'len'
 */
