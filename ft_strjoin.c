@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:38:18 by scarboni          #+#    #+#             */
-/*   Updated: 2020/08/15 20:26:20 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/08/15 20:32:49 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 /*
 ** Alloue (avec malloc(3)) et retourne une nouvelle
-** chaine, résultat de la concaténation de s1 et s2.
+** chaine, resultat de la concatenation de s1 et s2.
 ** La nouvelle chaine de caractères. NULL si
-** l'allocation échoue.
+** l'allocation echoue.
 */

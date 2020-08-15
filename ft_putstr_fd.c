@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:38:18 by scarboni          #+#    #+#             */
-/*   Updated: 2020/08/15 20:26:07 by scarboni         ###   ########.fr       */
+/*   Updated: 2020/08/15 20:32:49 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ void	ft_putstr_fd(char *s, int fd)
 	write(fd, s, ft_strlen(s));
 }
 /*
-** #1. La chaine de caractères à écrire.
-** #2. Le file descriptor sur lequel écrire.
+** #1. La chaine de caractères à ecrire.
+** #2. Le file descriptor sur lequel ecrire.
 ** Valeur de retour None
-** Fonctions externes autorisées
+** Fonctions externes autorisees
 ** write
 ** Description Écrit la chaine de caractères 's' sur le file
-** descriptor donné.
+** descriptor donne.
 */
