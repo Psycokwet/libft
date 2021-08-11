@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:38:18 by scarboni          #+#    #+#             */
-/*   Updated: 2019/11/27 17:51:02 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/10 20:00:08 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static size_t	ft_strnlen(const char *s, size_t len_max)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (i < len_max && s[i] != '\0')
@@ -22,7 +22,7 @@ static size_t	ft_strnlen(const char *s, size_t len_max)
 	return (i);
 }
 
-size_t			ft_strlcat(char *dst, const char *src, size_t dst_len_mx)
+size_t	ft_strlcat(char *dst, const char *src, size_t dst_len_mx)
 {
 	size_t	dst_len;
 	size_t	dst_len_mx_updated;

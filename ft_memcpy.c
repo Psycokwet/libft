@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:38:18 by scarboni          #+#    #+#             */
-/*   Updated: 2020/01/09 13:48:09 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/11 14:47:49 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	*ft_memcpy(void *dst, const void *src, size_t len)
 	while (len > 0)
 	{
 		len--;
-		((unsigned char*)dst)[len] = ((unsigned char*)src)[len];
+		((unsigned char *)dst)[len] = ((unsigned char *)src)[len];
 	}
 	return (dst);
 }

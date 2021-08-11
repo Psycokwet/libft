@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:38:18 by scarboni          #+#    #+#             */
-/*   Updated: 2019/11/30 10:30:09 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/10 20:22:27 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ static int	ft_lstmap_int(t_list *lst, t_list *new_lst, void *(*f)(void *))
 	return (ft_lstmap_int(lst->next, new_lst->next, f));
 }
 
-t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list *new_lst;
+	t_list	*new_lst;
 
 	if (!lst || !del || !f)
 		return (NULL);

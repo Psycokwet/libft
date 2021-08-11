@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:38:18 by scarboni          #+#    #+#             */
-/*   Updated: 2019/11/06 14:50:29 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/10 20:13:54 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,12 @@
 
 static int	ft_isbetween(int c, int min, int max)
 {
-	return (c >= min && c <= max ? 1 : 0);
+	if (c >= min && c <= max)
+		return (1);
+	return (0);
 }
 
-int			ft_isdigit(int c)
+int	ft_isdigit(int c)
 {
 	return (ft_isbetween(c, '0', '9'));
 }
