@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_lstiter_fun_first.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:38:18 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/10 20:13:54 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/13 01:10:15 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_isbetween(int c, int min, int max)
+void	ft_lstiter_fun_first(t_list *lst, void (*f)(void *))
 {
-	if (c >= min && c <= max)
-		return (1);
-	return (0);
-}
-
-int	ft_isdigit(int c)
-{
-	return (ft_isbetween(c, '0', '9'));
+	if (!lst || !f)
+		return ;
+	(*f)(lst->content);
+	ft_lstiter(lst->next, f);
 }

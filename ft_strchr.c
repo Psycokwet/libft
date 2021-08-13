@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:38:18 by scarboni          #+#    #+#             */
-/*   Updated: 2020/01/08 13:50:21 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/10 20:22:01 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ char	*ft_strchr(const char *s, int c)
 	i = -1;
 	while (s[++i])
 		if ((unsigned char)s[i] == c)
-			return ((char*)&s[i]);
+			return ((char *)&s[i]);
 	if ((unsigned char)s[i] == c)
-		return ((char*)&s[i]);
+		return ((char *)&s[i]);
 	return (NULL);
 }

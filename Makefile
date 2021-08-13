@@ -43,14 +43,15 @@ SRC_FILES	=		ft_memset.c			\
 					ft_putendl_fd.c		\
 					ft_putnbr_fd.c		
 
-SRCBONUS_FILES	=	ft_lstnew.c			\
-					ft_lstadd_front.c	\
-					ft_lstsize.c		\
-					ft_lstlast.c		\
-					ft_lstadd_back.c	\
-					ft_lstdelone.c		\
-					ft_lstclear.c		\
-					ft_lstiter.c		\
+SRCBONUS_FILES	=	ft_lstnew.c				\
+					ft_lstadd_front.c		\
+					ft_lstsize.c			\
+					ft_lstlast.c			\
+					ft_lstadd_back.c		\
+					ft_lstdelone.c			\
+					ft_lstclear.c			\
+					ft_lstiter.c			\
+					ft_lstiter_fun_first.c	\
 					ft_lstmap.c			
 
 OBJREGULAR_FILES	= 	$(SRC_FILES:.c=.o)			## get all .o names from .c names

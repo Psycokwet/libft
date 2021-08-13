@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:38:18 by scarboni          #+#    #+#             */
-/*   Updated: 2019/11/27 14:27:25 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/10 20:16:17 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 static size_t	strlen_from_int(int value, int sign)
 {
-	size_t result;
+	size_t	result;
 
 	result = 0;
 	if (sign == -1)
@@ -30,7 +30,7 @@ static size_t	strlen_from_int(int value, int sign)
 	return (result);
 }
 
-static char		*ft_itoa_int(int n, int buf, int min_i, int sign)
+static char	*ft_itoa_int(int n, int buf, int min_i, int sign)
 {
 	size_t	len;
 	int		i;
@@ -38,7 +38,7 @@ static char		*ft_itoa_int(int n, int buf, int min_i, int sign)
 
 	len = strlen_from_int(n, sign);
 	i = len;
-	str = (char*)malloc(sizeof(char) * (len + 1));
+	str = (char *)malloc(sizeof(char) * (len + 1));
 	if (!str)
 		return (NULL);
 	if (sign == -1)
@@ -53,7 +53,7 @@ static char		*ft_itoa_int(int n, int buf, int min_i, int sign)
 	return (str);
 }
 
-char			*ft_itoa(int n)
+char	*ft_itoa(int n)
 {
 	if (n < 0)
 	{

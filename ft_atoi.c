@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:38:18 by scarboni          #+#    #+#             */
-/*   Updated: 2020/01/10 12:42:54 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/11 14:46:56 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	skip_blanks(const char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i] == ' ' || (str[i] > 8 && str[i] < 14))
@@ -34,7 +34,7 @@ static int	set_sign(int *i, const char *str)
 	return (1);
 }
 
-int			ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
 	long	value;
 	long	next_value;

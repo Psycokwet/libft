@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:38:18 by scarboni          #+#    #+#             */
-/*   Updated: 2020/08/15 20:34:23 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/11 18:42:28 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 static int	is_equal_to(char c, char const *set)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (set[i] != '\0')
@@ -29,7 +29,7 @@ static int	is_equal_to(char c, char const *set)
 
 static int	get_end_trimmed(char const *s1, char const *set, size_t len)
 {
-	size_t i;
+	size_t	i;
 
 	i = 1;
 	while (is_equal_to(s1[len - i], set) && i < len)
@@ -39,9 +39,9 @@ static int	get_end_trimmed(char const *s1, char const *set, size_t len)
 
 static char	*ft_strtrim_int_mini(void)
 {
-	char *trimed;
+	char	*trimed;
 
-	trimed = (char*)malloc(sizeof(char));
+	trimed = (char *)malloc(sizeof(char));
 	trimed[0] = '\0';
 	return (trimed);
 }
@@ -59,7 +59,7 @@ char const *set)
 		return (NULL);
 	size_new_s = len - (start + end);
 	j = 0;
-	trimed = (char*)malloc((1 + size_new_s) * sizeof(char));
+	trimed = (char *)malloc((1 + size_new_s) * sizeof(char));
 	if (!trimed)
 		return (NULL);
 	while (start < len - end && s1[start])
@@ -72,7 +72,7 @@ char const *set)
 	return (trimed);
 }
 
-char		*ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim(char const *s1, char const *set)
 {
 	size_t	len;
 	size_t	start;
@@ -85,8 +85,9 @@ char		*ft_strtrim(char const *s1, char const *set)
 	start = 0;
 	while (is_equal_to(s1[start], set) && s1[start] != '\0')
 		start++;
-	return (start == len) ? ft_strtrim_int_mini() :
-	ft_strtrim_int_full(len, start, s1, set);
+	if (start == len)
+		return (ft_strtrim_int_mini());
+	return (ft_strtrim_int_full(len, start, s1, set));
 }
 
 /*

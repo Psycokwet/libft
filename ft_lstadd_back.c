@@ -6,11 +6,12 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:38:18 by scarboni          #+#    #+#             */
-/*   Updated: 2019/11/28 14:36:37 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/13 00:48:30 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "stdio.h"
 
 void	ft_lstadd_back(t_list **alst, t_list *new)
 {

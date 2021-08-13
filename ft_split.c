@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:38:18 by scarboni          #+#    #+#             */
-/*   Updated: 2020/08/15 20:37:02 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/10 19:58:58 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 static int	set_jump_and_fragment_size(char const *s, char c, size_t *jump,
 size_t *size_fragment)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	*jump = 0;
@@ -79,7 +79,7 @@ static int	get_split_datas(const char *s, char c, size_t size_s)
 	return (n_of_split);
 }
 
-char		**fill_split_datas(const char *s, char c, size_t size_s,
+char	**fill_split_datas(const char *s, char c, size_t size_s,
 int n_of_split)
 {
 	size_t	j;
@@ -91,7 +91,7 @@ int n_of_split)
 	j = 0;
 	if (set_jump_and_fragment_size(s, c, &jump_n, &size_fragment_n))
 		return (NULL);
-	splitted = (char**)malloc(sizeof(char*) * (n_of_split + 1));
+	splitted = (char **)malloc(sizeof(char *) * (n_of_split + 1));
 	if (!splitted)
 		return (NULL);
 	if (ft_add_to_splitted_int(&s[jump_n], size_fragment_n + 1, &splitted, &j))
@@ -102,14 +102,14 @@ int n_of_split)
 		if (set_jump_and_fragment_size(s + i_n, c, &jump_n, &size_fragment_n))
 			return (splitted);
 		if (ft_add_to_splitted_int(&s[i_n + jump_n], size_fragment_n + 1,
-		&splitted, &j))
+				&splitted, &j))
 			return (NULL);
 		i_n += jump_n + size_fragment_n;
 	}
 	return (splitted);
 }
 
-char		**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
 	int		n_of_split;
 	size_t	size_s;
@@ -121,7 +121,7 @@ char		**ft_split(char const *s, char c)
 	n_of_split = get_split_datas(s, c, size_s);
 	if (n_of_split == 0)
 	{
-		splitted = (char**)malloc(sizeof(char*));
+		splitted = (char **)malloc(sizeof(char *));
 		if (splitted)
 			splitted[0] = (NULL);
 		return (splitted);
