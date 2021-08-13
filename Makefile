@@ -50,8 +50,12 @@ SRCBONUS_FILES	=	ft_lstnew.c				\
 					ft_lstdelone.c			\
 					ft_lstclear.c			\
 					ft_lstiter.c			\
-					ft_lstiter_fun_first.c	\
-					ft_lstmap.c			
+					ft_lstmap.c
+
+SRC_FILES		+=	ft_lstiter_fun_first.c	\
+					get_next_line_utils.c	\
+					get_next_line.c			\
+					free_array.c			
 
 OBJREGULAR_FILES	= 	$(SRC_FILES:.c=.o)			## get all .o names from .c names
 OBJBONUS_FILES		=	$(SRCBONUS_FILES:.c=.o) 					## get all .o names from .c names
@@ -69,7 +73,7 @@ OBJ 		= $(addprefix $(OBJ_PATH), $(OBJ_FILES))
 
 CC			=	clang
 
-CFLAGS		+=	-W -Wall -Wextra -Werror -g3 -pedantic 		## '+=' allow to keep default flags.
+CFLAGS		+=	-W -Wall -Wextra -D BUFFER_SIZE=32 -g3 -Werror -pedantic  		## '+=' allow to keep default flags.
 
 RM			= 	rm -f
 
