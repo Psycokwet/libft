@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 18:54:29 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/13 13:33:48 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/13 15:49:59 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 void	free_array(char **array)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (array[i] != NULL)
