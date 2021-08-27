@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 11:14:23 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/22 16:11:43 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/27 11:55:34 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,10 @@ typedef struct s_list_double
 
 t_list_double	*ft_lstdb_get_elem_by_nb_from_back(t_list_double *lst, int nb);
 t_list_double	*ft_lstdb_get_elem_by_nb(t_list_double *lst, int nb);
+void			ft_lstdbadd_back(t_list_double **alst, t_list_double *new);
+void			ft_lstdbadd_front(t_list_double **alst, t_list_double *new);
 void			ft_lstdbclear(t_list_double **lst, void (*del)(void*));
+int				ft_lstdbcpy(t_list_double *head_src, t_list_double **head_dst, void *(*copy_create_content)(void*));
 t_list_double	*ft_lstdbcut(t_list_double *lst);
 void			ft_lstdbdelone(t_list_double *lst, void (*del)(void*));
 void			ft_lstdbiter_from_back(t_list_double *lst, void (*f)(void *));
@@ -111,6 +114,7 @@ void			ft_lstdbiter(t_list_double *lst, void (*f)(void *));
 t_list_double	*ft_lstdblast(t_list_double *lst);
 t_list_double	*ft_lstdbmap(t_list_double *lst, void *(*f)(void *), void (*del)(void *));
 t_list_double	*ft_lstdbnew(void *content);
+int				ft_lstdbreset(t_list_double *head_src, t_list_double *head_dst, void *(*copy_content)(void*, void*));
 int				ft_lstdbsize(t_list_double *lst);
 
 #endif

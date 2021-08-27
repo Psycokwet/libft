@@ -59,7 +59,10 @@ SRC_FILES		+=	ft_lstiter_fun_first.c					\
 					ft_lstcut_next.c						\
 					ft_lstdb_get_elem_by_nb_from_back.c		\
 					ft_lstdb_get_elem_by_nb.c				\
+					ft_lstdbadd_back.c						\
+					ft_lstdbadd_front.c						\
 					ft_lstdbclear.c							\
+					ft_lstdbcpy.c							\
 					ft_lstdbcut.c							\
 					ft_lstdbdelone.c						\
 					ft_lstdbiter_from_back.c				\
@@ -69,6 +72,7 @@ SRC_FILES		+=	ft_lstiter_fun_first.c					\
 					ft_lstdblast.c							\
 					ft_lstdbmap.c							\
 					ft_lstdbnew.c							\
+					ft_lstdbreset.c							\
 					ft_lstdbsize.c							\
 					ft_lstcpy.c								\
 					ft_lstreset.c							\
