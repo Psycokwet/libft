@@ -52,9 +52,26 @@ SRCBONUS_FILES	=	ft_lstnew.c				\
 					ft_lstiter.c			\
 					ft_lstmap.c
 
-SRC_FILES		+=	ft_lstiter_fun_first.c	\
-					get_next_line_utils.c	\
-					get_next_line.c			\
+SRC_FILES		+=	ft_lstiter_fun_first.c					\
+					get_next_line_utils.c					\
+					get_next_line.c							\
+					ft_lst_get_elem_by_nb.c					\
+					ft_lstcut_next.c						\
+					ft_lstdb_get_elem_by_nb_from_back.c		\
+					ft_lstdb_get_elem_by_nb.c				\
+					ft_lstdbclear.c							\
+					ft_lstdbcut.c							\
+					ft_lstdbdelone.c						\
+					ft_lstdbiter_from_back.c				\
+					ft_lstdbiter_fun_first_from_back.c		\
+					ft_lstdbiter_fun_first.c				\
+					ft_lstdbiter.c							\
+					ft_lstdblast.c							\
+					ft_lstdbmap.c							\
+					ft_lstdbnew.c							\
+					ft_lstdbsize.c							\
+					ft_lstcpy.c								\
+					ft_lstreset.c							\
 					free_array.c			
 
 OBJREGULAR_FILES	= 	$(SRC_FILES:.c=.o)			## get all .o names from .c names

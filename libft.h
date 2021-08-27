@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 11:14:23 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/13 13:26:58 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/22 16:11:43 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,31 @@ t_list			*ft_lstmap(t_list *lst, void *(*f)(void *),
 */
 
 void			ft_lstiter_fun_first(t_list *lst, void (*f)(void *));
+t_list			*ft_lst_get_elem_by_nb(t_list *lst, int nb);
 void			free_array(char **array);
+t_list			*ft_lstcut_next(t_list *lst);
+int				ft_lstreset(t_list *head_src, t_list *head_dst, void *(*copy_content)(void*, void*));
+int				ft_lstcpy(t_list *head_src, t_list **head_dst, void *(*copy_create_content)(void*));
+
+typedef struct s_list_double
+{
+	void			*content;
+	struct s_list_double	*next;
+	struct s_list_double	*prev;
+}				t_list_double;
+
+t_list_double	*ft_lstdb_get_elem_by_nb_from_back(t_list_double *lst, int nb);
+t_list_double	*ft_lstdb_get_elem_by_nb(t_list_double *lst, int nb);
+void			ft_lstdbclear(t_list_double **lst, void (*del)(void*));
+t_list_double	*ft_lstdbcut(t_list_double *lst);
+void			ft_lstdbdelone(t_list_double *lst, void (*del)(void*));
+void			ft_lstdbiter_from_back(t_list_double *lst, void (*f)(void *));
+void			ft_lstdbiter_fun_first_from_back(t_list_double *lst, void (*f)(void *));
+void			ft_lstdbiter_fun_first(t_list_double *lst, void (*f)(void *));
+void			ft_lstdbiter(t_list_double *lst, void (*f)(void *));
+t_list_double	*ft_lstdblast(t_list_double *lst);
+t_list_double	*ft_lstdbmap(t_list_double *lst, void *(*f)(void *), void (*del)(void *));
+t_list_double	*ft_lstdbnew(void *content);
+int				ft_lstdbsize(t_list_double *lst);
 
 #endif
