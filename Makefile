@@ -65,6 +65,8 @@ SRC_FILES		+=	ft_lstiter_fun_first.c					\
 					ft_lstdbcpy.c							\
 					ft_lstdbcut.c							\
 					ft_lstdbdelone.c						\
+					ft_lstdbfind_best_match.c				\
+					ft_lstdbfind.c							\
 					ft_lstdbiter_from_back.c				\
 					ft_lstdbiter_fun_first_from_back.c		\
 					ft_lstdbiter_fun_first.c				\

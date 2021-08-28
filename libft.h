@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 11:14:23 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/27 11:55:34 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/08/28 10:24:38 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,5 +116,7 @@ t_list_double	*ft_lstdbmap(t_list_double *lst, void *(*f)(void *), void (*del)(v
 t_list_double	*ft_lstdbnew(void *content);
 int				ft_lstdbreset(t_list_double *head_src, t_list_double *head_dst, void *(*copy_content)(void*, void*));
 int				ft_lstdbsize(t_list_double *lst);
+int				ft_lstdbfind(t_list_double *head_src, t_list_double **found, void *seek, int (*find)(void*, void*));
+int				ft_lstdbfind_best_match(t_list_double *head_src, t_list_double **found, void *seek, int (*find)(void*, void*));
 
 #endif
