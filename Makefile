@@ -62,6 +62,7 @@ SRC_FILES		+=	ft_lstiter_fun_first.c					\
 					ft_lstdbadd_back.c						\
 					ft_lstdbadd_front.c						\
 					ft_lstdbclear.c							\
+					ft_lstdbcount.c							\
 					ft_lstdbcpy.c							\
 					ft_lstdbcut.c							\
 					ft_lstdbdelone.c						\
