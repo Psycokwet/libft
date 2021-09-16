@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:38:18 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/28 10:24:17 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/09/16 14:07:22 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 #define NOT_FOUND 1
 #define ERROR 2
 
-
-static t_list_double	*ft_lstdbfind_best_match_int(t_list_double *lst, void *seek, int (*find)(void*, void*))
+static t_list_double	*ft_lstdbfind_best_match_int(t_list_double *lst,
+void *seek, int (*find)(void*, void*))
 {
 	if (!lst || !find)
 		return (NULL);
@@ -26,9 +26,10 @@ static t_list_double	*ft_lstdbfind_best_match_int(t_list_double *lst, void *seek
 	return (ft_lstdbfind_best_match_int(lst->next, seek, find));
 }
 
-int	ft_lstdbfind_best_match(t_list_double *head_src, t_list_double **found, void *seek, int (*find)(void*, void*))
+int	ft_lstdbfind_best_match(t_list_double *head_src, t_list_double **found,
+void *seek, int (*find)(void*, void*))
 {
-	t_list_double *tmp_found;
+	t_list_double	*tmp_found;
 
 	if (!head_src)
 		return (NOT_FOUND);
@@ -47,4 +48,3 @@ int	ft_lstdbfind_best_match(t_list_double *head_src, t_list_double **found, void
 		return (NOT_FOUND);
 	return (FOUND);
 }
-

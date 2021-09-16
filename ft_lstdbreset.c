@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:38:18 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/27 11:55:16 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/09/16 14:10:42 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 #define ERROR_WHILE_RESETING_TO_SRC 1
 #define SUCCESS 0
 
-static int	ft_lstdbreset_int(t_list_double *src, t_list_double *dst, void *(*copy_content)(void*, void*))
+static int	ft_lstdbreset_int(t_list_double *src, t_list_double *dst,
+void *(*copy_content)(void*, void*))
 {
 	if (!src)
 		return (SUCCESS);
@@ -25,7 +26,8 @@ static int	ft_lstdbreset_int(t_list_double *src, t_list_double *dst, void *(*cop
 	return (ft_lstdbreset_int(src->next, dst->next, copy_content));
 }
 
-int	ft_lstdbreset(t_list_double *head_src, t_list_double *head_dst, void *(*copy_content)(void*, void*))
+int	ft_lstdbreset(t_list_double *head_src, t_list_double *head_dst,
+void *(*copy_content)(void*, void*))
 {
 	if (!copy_content)
 		return (ERROR_WHILE_RESETING_TO_SRC);
@@ -35,4 +37,3 @@ int	ft_lstdbreset(t_list_double *head_src, t_list_double *head_dst, void *(*copy
 		return (ERROR_WHILE_RESETING_TO_SRC);
 	return (ft_lstdbreset_int(head_src, head_dst, copy_content));
 }
-

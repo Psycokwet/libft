@@ -6,7 +6,7 @@
 /*   By: scarboni <scarboni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 10:38:18 by scarboni          #+#    #+#             */
-/*   Updated: 2021/08/30 15:38:33 by scarboni         ###   ########.fr       */
+/*   Updated: 2021/09/16 11:55:53 by scarboni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,10 @@
 #define NOT_TARGET -1
 #define ERROR -2
 
-static int	ft_lstdbcount_int(t_list_double *lst, void *target_util, int (*is_target)(void*, void*))
+static int	ft_lstdbcount_int(t_list_double *lst, void *target_util,
+int (*is_target)(void*, void*))
 {
-	int tmp;
+	int	tmp;
 
 	if (!lst)
 		return (NOT_TARGET);
@@ -29,9 +30,11 @@ static int	ft_lstdbcount_int(t_list_double *lst, void *target_util, int (*is_tar
 	return (tmp);
 }
 
-int	ft_lstdbcount(t_list_double *head_src, void *target_util, int (*is_target)(void*, void*))
+int	ft_lstdbcount(t_list_double *head_src, void *target_util,
+int (*is_target)(void*, void*))
 {
-	int tmp;
+	int	tmp;
+
 	if (!head_src || !is_target)
 		return (ERROR);
 	tmp = ft_lstdbcount_int(head_src, target_util, is_target);
@@ -39,4 +42,3 @@ int	ft_lstdbcount(t_list_double *head_src, void *target_util, int (*is_target)(v
 		return (0);
 	return (tmp + 1);
 }
-
